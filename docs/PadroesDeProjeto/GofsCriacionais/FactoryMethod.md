@@ -114,11 +114,11 @@ Principal {
 
 ## Referências Bibliográficas
 
-> [1] REFRACTORING.GURU. Factory Metho. [S. l.], [s. d.]. Disponível em: https://refactoring.guru/design-patterns/factory-method. Acesso em: 25 maio. 2025.
+> 
 
 ## Bibliografia 
 
-> 
+> [1] REFRACTORING.GURU. Factory Metho. [S. l.], [s. d.]. Disponível em: https://refactoring.guru/design-patterns/factory-method. Acesso em: 25 maio. 2025.
 
 
 ## Histórico de Versões
