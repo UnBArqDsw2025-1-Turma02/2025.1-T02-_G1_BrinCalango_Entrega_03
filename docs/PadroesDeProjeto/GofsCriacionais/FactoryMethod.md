@@ -22,11 +22,16 @@ O padrão de projeto Factory Method é um padrão criacional que define uma inte
 
 Na Figura 2, encontra-se a modelagem para o Factory Method 
 
-<p align="center"><strong>Figura 2 – Modelagem do Factory Method  </strong></p>
+<div align="center">
 
-![Diagrama do Factory Method](../assets/FactoryMethod.png)
+<p><strong>Figura 2 – Modelagem do Factory Method  </strong></p>
 
-<p align="center"><em>Autor: <a href="https://github.com/julia-fortunato" target="_blank">Júlia Fortunato</a>, <a href="https://github.com/luanasoares0901" target="_blank">Luana</a> e <a href="https://github.com/ailujana" target="_blank">Ana Julia</a>, 2025</em></p>
+![Diagrama do Factory Method](../assets/factoryMethod.png)
+
+<p><em>Autor: <a href="https://github.com/julia-fortunato" target="_blank">Júlia Fortunato</a>, <a href="https://github.com/luanasoares0901" target="_blank">Luana</a> e <a href="https://github.com/ailujana" target="_blank">Ana Julia</a>, 2025</em></p>
+
+</div>
+
 
 #### Frame interativo da modelagem do Factory Method
 
