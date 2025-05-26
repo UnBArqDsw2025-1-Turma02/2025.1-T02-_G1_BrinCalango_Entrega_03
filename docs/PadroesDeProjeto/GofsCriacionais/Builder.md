@@ -32,7 +32,7 @@ Ao final desse processo, o Cliente pode acessar ou recuperar a configuração pe
 
 <div align="center">
 
-![diagrama do builder](assets/builderr.jpg)
+![Diagrama do Builder](../assets/builderr.jpg)
 
 </div>
 
@@ -48,7 +48,7 @@ Na Figura 2, encontra-se a modelagem para o Builder de Configuração de Acessib
 
 <p align="center"><strong>Figura 2 – Modelagem do Builder de Configuração de Acessibilidade </strong></p>
 
-![diagrama do builder](assets/Builder-BrinCalango.svg)
+![Diagrama do builder](../assets/Builder-BrinCalango.svg)
 
 <p align="center"><em>Autor: <a href="https://github.com/julia-fortunato" target="_blank">Júlia Fortunato</a>, <a href="https://github.com/andre-maia51" target="_blank">André Cláudio</a>, 2025</em></p>
 
