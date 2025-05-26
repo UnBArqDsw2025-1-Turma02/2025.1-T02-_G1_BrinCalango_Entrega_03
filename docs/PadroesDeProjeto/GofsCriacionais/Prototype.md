@@ -65,7 +65,7 @@ BancoDeQuestoes
 
 [Acesse o diagrama interativo no Lucidchart](https://lucid.app/lucidchart/5297f22b-c775-46c0-a384-1254419ea4e8/edit?invitationId=inv_5365ef39-e274-4853-aeba-90716661d7b4&page=0_0#)
 
-#### Frame interativo da modelagem do Builder
+#### Frame interativo da modelagem do Prototype
 <div style="width: 1000px; height: 500px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:1000px; height:500px" src="https://lucid.app/documents/embedded/5297f22b-c775-46c0-a384-1254419ea4e8" id="YEkiwTVEnZWG"></iframe></div>
 
 ## Vantagens obtidas
@@ -102,4 +102,4 @@ BancoDeQuestoes
 ##  Histórico de Versões
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
-| 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | - |
+| 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/8c27e9e66a1404e0664b4cf0ea93b82e572b6d0e) |
