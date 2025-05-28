@@ -216,7 +216,6 @@ public class Principal {
         System.out.println(clonada2.enunciado);
     }
 }
-
 ```
 
 ## Vantagens obtidas
@@ -229,6 +228,7 @@ public class Principal {
 ## (i)Autoras:
 - Ana Júlia Mendes Santos  
 - Maria Clara Oleari de Araujo
+- Júlia Takaki Neves
 
 **Observação**: rastro dos commits está no histórico de versões no fim da página.
 
@@ -253,5 +253,5 @@ public class Principal {
 ##  Histórico de Versões
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
-| 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/8c27e9e66a1404e0664b4cf0ea93b82e572b6d0e) |
-| 1.1    | 28/05/2025 | Criação da implementação do Prototypr | [Júlia Takaki](https://github.com/juliatakaki) | - | - | [Commit-2]() |
+| 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/8c27e9e66a1404e0664b4cf0ea93b82e572b6d0e) |
+| 1.1    | 28/05/2025 | Criação da implementação do Prototypr | [Júlia Takaki](https://github.com/juliatakaki) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/9933b7cd86bf97b661f0ad2832aa4279ee5c7777) |
