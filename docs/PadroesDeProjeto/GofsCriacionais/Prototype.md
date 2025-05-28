@@ -68,6 +68,157 @@ BancoDeQuestoes
 #### Frame interativo da modelagem do Prototype
 <div style="width: 1000px; height: 500px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:1000px; height:500px" src="https://lucid.app/documents/embedded/5297f22b-c775-46c0-a384-1254419ea4e8" id="YEkiwTVEnZWG"></iframe></div>
 
+### Implementação do Prototype
+
+```
+import java.util.*;
+
+// Produto Abstrato (Prototype)
+abstract class Questao implements Cloneable {
+    protected int idQuestao;
+    protected String nivel;
+    protected int pontuacao;
+    protected String enunciado;
+    protected String resposta;
+
+    public abstract Questao criarQuestao();
+
+    public Questao clone() {
+        try {
+            return (Questao) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+}
+
+// Produto Concreto 1
+class QuestaoVouF extends Questao {
+    protected boolean RespostaVouF;
+
+    @Override
+    public Questao criarQuestao() {
+        return new QuestaoVouF();
+    }
+
+    @Override
+    public Questao clone() {
+        return (QuestaoVouF) super.clone();
+    }
+}
+
+// Produto Concreto 2
+class QuestaoLacuna extends Questao {
+    protected String RespostaLacuna;
+
+    public boolean acertouLacuna(String resposta) {
+        return resposta.equals(RespostaLacuna);
+    }
+
+    @Override
+    public Questao criarQuestao() {
+        return new QuestaoLacuna();
+    }
+
+    @Override
+    public Questao clone() {
+        return (QuestaoLacuna) super.clone();
+    }
+}
+
+// Produto Concreto 3
+class QuestaoMultiplaEscolha extends Questao {
+    protected List<String> AlternativasME;
+    protected List<String> AlternativasCorretasME;
+
+    public boolean acertouME(String resposta) {
+        return AlternativasCorretasME.contains(resposta);
+    }
+
+    @Override
+    public Questao criarQuestao() {
+        return new QuestaoMultiplaEscolha();
+    }
+
+    @Override
+    public Questao clone() {
+        QuestaoMultiplaEscolha copia = (QuestaoMultiplaEscolha) super.clone();
+        copia.AlternativasME = new ArrayList<>(AlternativasME);
+        copia.AlternativasCorretasME = new ArrayList<>(AlternativasCorretasME);
+        return copia;
+    }
+}
+
+// Produto Concreto 4
+class QuestaoEscolhaMultipla extends Questao {
+    protected List<String> AlternativasEM;
+    protected boolean RespostaEM;
+
+    public boolean acertouME(String resposta) {
+        return Boolean.parseBoolean(resposta) == RespostaEM;
+    }
+
+    @Override
+    public Questao criarQuestao() {
+        return new QuestaoEscolhaMultipla();
+    }
+
+    @Override
+    public Questao clone() {
+        QuestaoEscolhaMultipla copia = (QuestaoEscolhaMultipla) super.clone();
+        copia.AlternativasEM = new ArrayList<>(AlternativasEM);
+        return copia;
+    }
+}
+
+// Banco de Questões
+class BancoDeQuestoes {
+    private Map<Integer, Questao> modelos = new HashMap<>();
+
+    public void adicionarModelo(Questao questao) {
+        modelos.put(questao.idQuestao, questao);
+    }
+
+    public Questao clone(int idQuestao) {
+        Questao questao = modelos.get(idQuestao);
+        if (questao != null) {
+            return questao.clone();
+        }
+        return null;
+    }
+}
+
+public class Principal {
+    public static void main(String[] args) {
+        BancoDeQuestoes banco = new BancoDeQuestoes();
+
+        // Criando modelo de QuestaoVouF
+        QuestaoVouF qvf = new QuestaoVouF();
+        qvf.idQuestao = 1;
+        qvf.nivel = "Fácil";
+        qvf.enunciado = "A Terra é redonda?";
+        qvf.RespostaVouF = true;
+        banco.adicionarModelo(qvf);
+
+        // Criando modelo de QuestaoLacuna
+        QuestaoLacuna qlacuna = new QuestaoLacuna();
+        qlacuna.idQuestao = 2;
+        qlacuna.nivel = "Médio";
+        qlacuna.enunciado = "O nome do nosso planeta é _____.";
+        qlacuna.RespostaLacuna = "Terra";
+        banco.adicionarModelo(qlacuna);
+
+        // Clonando e usando as questões
+        Questao clonada1 = banco.clone(1);
+        Questao clonada2 = banco.clone(2);
+
+        System.out.println(clonada1.enunciado);
+        System.out.println(clonada2.enunciado);
+    }
+}
+
+```
+
 ## Vantagens obtidas
 
 - **Eficiência**: Redução no custo de criação de objetos complexos.
@@ -103,3 +254,4 @@ BancoDeQuestoes
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/8c27e9e66a1404e0664b4cf0ea93b82e572b6d0e) |
+| 1.1    | 28/05/2025 | Criação da implementação do Prototypr | [Júlia Takaki](https://github.com/juliatakaki) | - | - | [Commit-2]() |
