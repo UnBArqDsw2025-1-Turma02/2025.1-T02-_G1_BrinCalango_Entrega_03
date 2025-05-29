@@ -299,6 +299,6 @@ public class Cliente {
 ## Histórico de Versões
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
-| 1.0    | 23/05/2025 | Criação e Documentação do Builder | [Andre Cláudio](https://github.com/andre-maia51), [Júlia Fortunato](https://github.com/julia-fortunato) | - | - | - |
-| 1.1    | 29/05/2025 | Criação da implementação do Builder | [Diogo Barboza](https://github.com/Diogo-Barboza) | - | - | - |
+| 1.0    | 23/05/2025 | Criação e Documentação do Builder | [Andre Cláudio](https://github.com/andre-maia51), [Júlia Fortunato](https://github.com/julia-fortunato) | - | - | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/640be50b4d53000609c93e142ce41ec11d218840) |
+| 1.1    | 29/05/2025 | Criação da implementação do Builder | [Diogo Barboza](https://github.com/Diogo-Barboza) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/91917dcaac6b3ce3989754812d91acb1b29f6321) |
 
