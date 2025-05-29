@@ -74,104 +74,230 @@ BancoDeQuestoes
 import java.util.*;
 
 // Produto Abstrato (Prototype)
-abstract class Questao implements Cloneable {
+
+public abstract class Questao {
+
     protected int idQuestao;
-    protected String nivel;
+    protected int nivel;
     protected int pontuacao;
     protected String enunciado;
     protected String resposta;
 
-    public abstract Questao criarQuestao();
+    public Questao(){
+    }
 
-    public Questao clone() {
-        try {
-            return (Questao) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
+    public Questao(Questao instancia) {
+        if(instancia != null){
+            this.idQuestao = instancia.idQuestao;
+            this.nivel = instancia.nivel;
+            this.pontuacao = instancia.pontuacao;
+            this.enunciado = instancia.enunciado;
+            this.resposta = instancia.resposta;
         }
     }
+
+    public int getIdQuestao() {
+        return idQuestao;
+    }
+
+    public void setIdQuestao(int idQuestao) {
+        this.idQuestao = idQuestao;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
+    }
+
+    public String getEnunciado() {
+        return enunciado;
+    }
+
+    public void setEnunciado(String enunciado) {
+        this.enunciado = enunciado;
+    }
+
+    public String getResposta() {
+        return resposta;
+    }
+
+    public void setResposta(String resposta) {
+        this.resposta = resposta;
+    }
+
+    public abstract Questao clone();
+
 }
 
-// Produto Concreto 1
-class QuestaoVouF extends Questao {
-    protected boolean RespostaVouF;
 
-    @Override
-    public Questao criarQuestao() {
-        return new QuestaoVouF();
+public class QuestaoVouF extends Questao {
+
+    private boolean respostaVouF;
+
+    public QuestaoVouF(){
+    }
+
+    public QuestaoVouF(QuestaoVouF instancia){
+        super(instancia);
+        if(instancia != null){
+            this.respostaVouF = instancia.respostaVouF;
+        }else{
+            throw new RuntimeException("Instancia Vazia!!");
+        }
+    }
+
+    public boolean getRespostaVouF() {
+        return respostaVouF;
+    }
+
+    public void setRespostaVouF(boolean respostaVouF) {
+        this.respostaVouF = respostaVouF;
     }
 
     @Override
     public Questao clone() {
-        return (QuestaoVouF) super.clone();
+        return new QuestaoVouF(this);
     }
+
 }
 
-// Produto Concreto 2
-class QuestaoLacuna extends Questao {
-    protected String RespostaLacuna;
 
-    public boolean acertouLacuna(String resposta) {
-        return resposta.equals(RespostaLacuna);
+
+public class QuestaoLacuna extends Questao{
+
+    private String respostaLacuna;
+
+    public QuestaoLacuna(){
     }
 
-    @Override
-    public Questao criarQuestao() {
-        return new QuestaoLacuna();
+    public QuestaoLacuna(QuestaoLacuna instancia) {
+        super(instancia);
+        if(instancia != null){
+            this.respostaLacuna = instancia.respostaLacuna;
+        }else{
+            throw new RuntimeException("Instancia Vazia!!");
+        }
+    }
+
+    public String getRespostaLacuna() {
+        return respostaLacuna;
+    }
+
+    public void setRespostaLacuna(String respostaLacuna) {
+        this.respostaLacuna = respostaLacuna;
+    }
+
+    public boolean acertouLacuna(String resposta){
+        return resposta.equals(respostaLacuna);
     }
 
     @Override
     public Questao clone() {
-        return (QuestaoLacuna) super.clone();
+        return new QuestaoLacuna(this);
     }
 }
 
-// Produto Concreto 3
-class QuestaoMultiplaEscolha extends Questao {
-    protected List<String> AlternativasME;
-    protected List<String> AlternativasCorretasME;
 
-    public boolean acertouME(String resposta) {
-        return AlternativasCorretasME.contains(resposta);
+import java.util.ArrayList;
+
+public class QuestaoMultiplaEscolha extends Questao{
+
+    private ArrayList<String> alternativasME;
+    private ArrayList<String> alternativasCorretasME;
+
+    public QuestaoMultiplaEscolha(){
     }
 
-    @Override
-    public Questao criarQuestao() {
-        return new QuestaoMultiplaEscolha();
+    public QuestaoMultiplaEscolha(QuestaoMultiplaEscolha instancia){
+        super(instancia);
+        if(instancia != null){
+            this.alternativasME = instancia.alternativasME;
+            this.alternativasCorretasME = instancia.alternativasCorretasME;
+        }else{
+            throw new RuntimeException("Instancia Vazia!!");
+        }
+    }
+
+    public ArrayList<String> getAlternativasME() {
+        return alternativasME;
+    }
+
+    public void setAlternativasME(ArrayList<String> alternativasME) {
+        this.alternativasME = alternativasME;
+    }
+
+    public List<String> getAlternativasCorretasME() {
+        return alternativasCorretasME;
+    }
+
+    public void setAlternativasCorretasME(ArrayList<String> alternativasCorretasME) {
+        this.alternativasCorretasME = alternativasCorretasME;
+    }
+
+    public boolean acertouME(List<String> respostas){
+        int cont = 0;
+        for(String res : respostas){
+            if(this.alternativasCorretasME.contains(res)){
+                cont++;
+            }
+        }
+        return (cont == this.alternativasCorretasME.size());
     }
 
     @Override
     public Questao clone() {
-        QuestaoMultiplaEscolha copia = (QuestaoMultiplaEscolha) super.clone();
-        copia.AlternativasME = new ArrayList<>(AlternativasME);
-        copia.AlternativasCorretasME = new ArrayList<>(AlternativasCorretasME);
-        return copia;
+        return new QuestaoMultiplaEscolha(this);
     }
 }
 
-// Produto Concreto 4
-class QuestaoEscolhaMultipla extends Questao {
-    protected List<String> AlternativasEM;
-    protected boolean RespostaEM;
+import java.util.Map;
 
-    public boolean acertouME(String resposta) {
-        return Boolean.parseBoolean(resposta) == RespostaEM;
+public class QuestaoEscolhaMultipla extends Questao{
+
+    private Map<String,Boolean> alternativasEM;
+
+    public QuestaoEscolhaMultipla(){
     }
 
-    @Override
-    public Questao criarQuestao() {
-        return new QuestaoEscolhaMultipla();
+    public QuestaoEscolhaMultipla(QuestaoEscolhaMultipla instancia){
+        super(instancia);
+        if(instancia != null){
+            this.alternativasEM = instancia.alternativasEM;
+        }else{
+            throw new RuntimeException("Instancia Vazia!!");
+        }
+    }
+
+    public Map<String, Boolean> getAlternativasEM() {
+        return alternativasEM;
+    }
+
+    public void setAlternativasEM(Map<String, Boolean> alternativasEM) {
+        this.alternativasEM = alternativasEM;
+    }
+
+    public boolean acertouME(Map<String,Boolean> resposta){
+        return alternativasEM.equals(resposta);
     }
 
     @Override
     public Questao clone() {
-        QuestaoEscolhaMultipla copia = (QuestaoEscolhaMultipla) super.clone();
-        copia.AlternativasEM = new ArrayList<>(AlternativasEM);
-        return copia;
+        return new QuestaoEscolhaMultipla(this);
     }
 }
 
-// Banco de Questões
+
 class BancoDeQuestoes {
     private Map<Integer, Questao> modelos = new HashMap<>();
 
@@ -188,34 +314,42 @@ class BancoDeQuestoes {
     }
 }
 
-public class Principal {
+import java.util.Map;
+
+public class Main {
     public static void main(String[] args) {
-        BancoDeQuestoes banco = new BancoDeQuestoes();
 
-        // Criando modelo de QuestaoVouF
-        QuestaoVouF qvf = new QuestaoVouF();
-        qvf.idQuestao = 1;
-        qvf.nivel = "Fácil";
-        qvf.enunciado = "A Terra é redonda?";
-        qvf.RespostaVouF = true;
-        banco.adicionarModelo(qvf);
+        QuestaoEscolhaMultipla qem = new QuestaoEscolhaMultipla();
+        Map<String,Boolean> resQuestao = new HashMap<>();
+        Map<String,Boolean> resAluno = new HashMap<>();
 
-        // Criando modelo de QuestaoLacuna
-        QuestaoLacuna qlacuna = new QuestaoLacuna();
-        qlacuna.idQuestao = 2;
-        qlacuna.nivel = "Médio";
-        qlacuna.enunciado = "O nome do nosso planeta é _____.";
-        qlacuna.RespostaLacuna = "Terra";
-        banco.adicionarModelo(qlacuna);
+        qem.setIdQuestao(1);
+        qem.setNivel(0);
+        qem.setPontuacao(10);
+        qem.setEnunciado("Qual função escreve no console?");
+        qem.setResposta(null);
+        resQuestao.put("escreva",true);
+        resQuestao.put("escreval",true);
+        resQuestao.put("leia",false);
+        resQuestao.put("leiaCaracter",false);
+        qem.setAlternativasEM(resQuestao);
 
-        // Clonando e usando as questões
-        Questao clonada1 = banco.clone(1);
-        Questao clonada2 = banco.clone(2);
+        resAluno.put("leiaCaracter",false);
+        resAluno.put("escreva",true);
+        resAluno.put("leia",false);
+        resAluno.put("escreval",false);
 
-        System.out.println(clonada1.enunciado);
-        System.out.println(clonada2.enunciado);
+        QuestaoEscolhaMultipla qemClone = (QuestaoEscolhaMultipla) qem.clone();
+
+        if(qemClone.acertouME(resAluno)){
+            System.out.println("Acertou!");
+        }else{
+            System.out.println("Errou!");
+        }
+
     }
 }
+
 ```
 
 ## Vantagens obtidas
@@ -254,4 +388,5 @@ public class Principal {
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/8c27e9e66a1404e0664b4cf0ea93b82e572b6d0e) |
-| 1.1    | 28/05/2025 | Criação da implementação do Prototypr | [Júlia Takaki](https://github.com/juliatakaki) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/9933b7cd86bf97b661f0ad2832aa4279ee5c7777) |
+| 1.1    | 28/05/2025 | Criação da implementação do Prototype | [Júlia Takaki](https://github.com/juliatakaki) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/9933b7cd86bf97b661f0ad2832aa4279ee5c7777) |
+| 1.2    | 28/05/2025 | Escrita da implementação do Prototype | [Mauricio Ferreira](https://github.com/mauricio-araujoo), [Cristiano Morais](https://github.com/CristianoMoraiss) | - | - | - |
