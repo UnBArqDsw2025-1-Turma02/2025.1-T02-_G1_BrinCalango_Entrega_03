@@ -4,21 +4,14 @@
 
 O padrão de projeto Factory Method é um padrão criacional que define uma interface para a criação de objetos, permitindo que as subclasses escolham qual tipo de objeto será instanciado. Essa abordagem promove flexibilidade e reduz o acoplamento entre o código que usa os objetos e suas classes concretas, facilitando a extensão do sistema sem modificar seu núcleo.
 
-### Esquema ilustrativo do Factory Method 
+#### Benefícios
 
-<div align="center">
+- Facilita a extensão do código com novos tipos de objetos.
+- Reduz o acoplamento entre o código cliente e as classes concretas.
+- Encapsula a lógica de criação dos objetos.
 
-<p><strong>Figura 1 – Fluxograma ilustrativo do padrão Factory Method aplicado</strong></p>
-
-![esquema ilustrativo]()
-
-<p><em>Autor: <a href="https://github.com/julia-fortunato" target="_blank">Júlia Fortunato</a>, <a href="https://github.com/luanasoares0901" target="_blank">Luana</a> e <a href="https://github.com/ailujana" target="_blank">Ana Julia</a>, 2025</em></p>
-
-</div>
 
 ### Modelagem do Factory Method 
-
-#### Imagem
 
 Na Figura 2, encontra-se a modelagem para o Factory Method 
 
@@ -32,6 +25,89 @@ Na Figura 2, encontra-se a modelagem para o Factory Method
 
 </div>
 
+A seguir, descrevemos as classes envolvidas e sua função no padrão.
+
+#### Classe Abstrata `Questao`
+
+Representa o **produto abstrato**.
+
+```plaintext
+Atributos:
+- idQuestao: int
+- tema: string
+- nivelDificuldade: int
+- tipo: string
+- dica: string
+- pontuacao: int
+
+Métodos:
++ executarQuestao(): void
++ validarResposta(respostaUsuario): boolean
++ proxQuestao(): Questao
++ mostrarDica(): string
++ exibirExplicacao(): string
+```
+
+---
+
+#### Subclasses de `Questao` (Produtos Concretos)
+
+##### `MultiplaEscolha`
+- alternativaCorreta: string
+- alternativas: list<string>
+-  + exibirQuestaoMultiplaEscolha(idQuestao): void
+
+##### `EscolhaMultipla`
+- alternativasCorretas: list<string>
+- alternativas: list<string>
+-  + exibirQuestaoEscolhaMultipla(idQuestao): void
+
+##### `VerdadeiroOuFalso`
+- resposta: boolean
+-  + exibirQuestaoVouF(idQuestao): void
+
+##### `Lacuna`
+- alternativaCorreta: string
+- opcoesLacunas: list<string>
+-  + exibirQuestaoLacuna(idQuestao): void
+
+---
+
+#### Criador Abstrato `QuestaoCreator`
+
+Define o método de fábrica:
+
+```plaintext
++ criarQuestao(): Questao
+```
+
+---
+
+#### Criadores Concretos
+
+Implementam o método de fábrica instanciando as subclasses de `Questao`.
+
+##### `CriadorQuestaoMultiplaEscolha`
+```plaintext
++ criarQuestao(): MultiplaEscolha
+```
+
+##### `CriadorQuestaoEscolhaMultipla`
+```plaintext
++ criarQuestao(): EscolhaMultipla
+```
+
+##### `CriadorQuestaoVouF`
+```plaintext
++ criarQuestao(): VerdadeiroOuFalso
+```
+
+##### `CriadorQuestaoLacuna`
+```plaintext
++ criarQuestao(): Lacuna
+```
+
+---
 
 #### Frame interativo da modelagem do Factory Method
 
@@ -137,17 +213,20 @@ class Principal {
 }
 ```
 
-
-## Referências Bibliográficas
-
-> 
-
 ## Bibliografia 
 
 > [1] REFRACTORING.GURU. Factory Metho. [S. l.], [s. d.]. Disponível em: https://refactoring.guru/design-patterns/factory-method. Acesso em: 25 maio. 2025.
 
+> [2] Gamma, Erich, et al. *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley, 1994. Acesso em: 20 de maio. 2025.
+
+> [3] Larman, Craig. *Utilizando UML e Padrões*. Bookman, 3ª ed., 2007. Acesso em: 20 de maio. 2025.
+
+> [4]https://www.geeksforgeeks.org/factory-method-design-pattern-in-java/ Acesso em: 20 de maio. 2025.
+
+ 
 
 ## Histórico de Versões
 | Versão | Data | Descrição | Autor(es) | Revisor(es) | Descrição da Revisão | Commits |
 | ------ | ---- | --------- | --------- | ----------- | -------------------- | ------- |
 | 1.0 | 25/05/2025 | Estruturação e Inclusão da implementação | [Ana Catarina](https://github.com/an4catarina) e [Victor Hugo](http://github.com/ViictorHugoo) | | | |
+| 1.1 | 30/05/2025 | Documentação da modelagem| [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) e [Luana Ribeiro](https://github.com/luanasoares0901) | | | |
