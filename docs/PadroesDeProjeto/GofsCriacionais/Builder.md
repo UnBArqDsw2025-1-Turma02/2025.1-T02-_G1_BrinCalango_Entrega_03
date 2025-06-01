@@ -1,6 +1,4 @@
-# 3.1.- GoFs Criacionais
-
-## Builder 
+# Builder 
 
 O Builder é um padrão de projeto do qual o principal objetivo é **separar** a criação de um objeto complexo para que possamos criar diferentes representações dele. 
 
@@ -12,7 +10,7 @@ Seguindo essa ideia, pensou-se na aplicação de um Builder na classe responsáv
 
 Dessa forma, a adoção do padrão Builder no BrinCalango mostrou-se útil por permitir a criação flexível de diferentes configurações de acessibilidade, atendendo às necessidades específicas de cada grupo de crianças sem a necessidade de criar inúmeras subclasses ou interfaces complexas. Isso simplifica o processo de configuração e manutenção, garantindo uma experiência mais inclusiva e personalizada para os usuários do sistema.
 
-### Esquema ilustrativo do Builder de Configuração de Acessibilidade
+## Esquema ilustrativo do Builder de Configuração de Acessibilidade
 
 Com o objetivo de facilitar a compreensão do padrão de projeto **Builder** na aplicação BrinCalango, foi desenvolvido um esquema ilustrativo, presente na Figura 1, que representa a interação entre três componentes principais: o **Cliente**, o **Director** e o **Builder**.
 
@@ -40,7 +38,7 @@ Ao final desse processo, o Cliente pode acessar ou recuperar a configuração pe
 
 
 
-### Modelagem do Builder de Configuração de Acessibilidade
+## Modelagem do Builder de Configuração de Acessibilidade
 
 #### Imagem
 
@@ -55,7 +53,7 @@ Na Figura 2, encontra-se a modelagem para o Builder de Configuração de Acessib
 #### Frame interativo da modelagem do Builder
 <div style="width: 1000px; height: 500px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:1000px; height:500px" src="https://lucid.app/documents/embedded/2d83e371-90ce-4f3d-af08-fe71bfb54e1b" id="YEkiwTVEnZWG"></iframe></div>
 
-### Implementação do Builder
+## Implementação do Builder
 
 ```JAVA
 abstract class ConfiguracaoAcessibilidade {
@@ -294,7 +292,7 @@ public class Cliente {
 
 ## Bibliografia 
 
-> SOURCEMAKING. Builder. [S. l.], [s. d.]. Disponível em: https://sourcemaking.com/design_patterns/builder. Acesso em: 23 maio. 2025.
+> [1] SOURCEMAKING. Builder. [S. l.], [s. d.]. Disponível em: https://sourcemaking.com/design_patterns/builder. Acesso em: 23 maio. 2025.
 
 ## Histórico de Versões
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |

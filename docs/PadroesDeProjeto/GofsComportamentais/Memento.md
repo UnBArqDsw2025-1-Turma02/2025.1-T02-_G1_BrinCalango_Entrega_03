@@ -1,10 +1,8 @@
-# 3.3. GoFs Comportamentais
-
-## Memento
+# Memento
 
 O padrão Memento foi escolhido por sua capacidade de capturar e restaurar o estado interno de um objeto sem violar o encapsulamento. Isso se alinha perfeitamente com a necessidade de salvar e restaurar o progresso do usuário (nível, XP, acertos, erros etc.) de forma transparente.
 
-### Estrutura do Memento na Modelagem
+## Estrutura do Memento na Modelagem
 
 A modelagem foi dividida em três classes principais:
 
@@ -29,7 +27,7 @@ A modelagem foi dividida em três classes principais:
 
 ---
 
-### Benefícios Observados
+## Benefícios Observados
 
 - **Segurança e simplicidade**: ideal para crianças — o progresso é salvo automaticamente sem exigir ações complexas.
 - **Recuperação fácil**: evita frustração em caso de erro ou queda de sistema.
@@ -37,14 +35,14 @@ A modelagem foi dividida em três classes principais:
 
 ---
 
-### Exemplo de Fluxo
+## Exemplo de Fluxo
 
 1. A criança completa um conjunto de questões.
 2. O método `salvarProgresso()` é chamado, e o estado é armazenado como `ProgressoMemento`.
 3. Se necessário, o método `restaurarProgresso()` recupera o progresso anterior sem expor os detalhes internos da lógica de XP e níveis.
 
 
-### Modelagem do Memento
+## Modelagem do Memento
 
 Na Figura 2, encontra-se a modelagem para o Memento 
 
@@ -59,14 +57,14 @@ Na Figura 2, encontra-se a modelagem para o Memento
 </div>
 
 
-#### Frame interativo da modelagem do Memento
+## Frame interativo da modelagem do Memento
 
 <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/ab4b32b3-4349-4cbd-90ad-b51ce4c55466" id="Ys8kvwa65fiR"></iframe></div>
 
-### Implementação do Memento
+## Implementação do Memento
 
 
-## (i)Autores:
+## (i) Autores:
 - Ana Júlia Mendes Santos  
 - André Maia
 - Luana Ribeiro Soares
@@ -90,7 +88,7 @@ Embora o padrão Memento seja poderoso, ele também pode aumentar o consumo de m
 - A modelagem foi relaizada em conjunto durante reunião.
 
 
-## Bibliografia 
+## Bibiografia
 
 > [1] Refactoring.Guru. Padrão de Projeto Memento. Disponível em: https://refactoring.guru/pt-br/design-patterns/memento. Acesso em: 30 maio 2025.
 
@@ -101,7 +99,6 @@ Embora o padrão Memento seja poderoso, ele também pode aumentar o consumo de m
 > [4] LARMAN, Craig. Utilizando UML e Padrões: uma introdução à análise e ao projeto orientados a objetos e ao processo unificado. 3. ed. Porto Alegre: Bookman, 2007.Acesso em: 30 maio 2025.
 
  
-
 ## Histórico de Versões
 | Versão | Data | Descrição | Autor(es) | Revisor(es) | Descrição da Revisão | Commits |
 | ------ | ---- | --------- | --------- | ----------- | -------------------- | ------- |

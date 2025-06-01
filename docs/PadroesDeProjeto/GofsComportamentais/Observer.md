@@ -1,7 +1,7 @@
-# Observer no BrinCalango
+# Observer
 
 ## Definição
-O padrão **Observer** é um dos padrões comportamentais definidos pelos GoF (Gang of Four), que estabelece uma dependência um-para-muitos entre objetos, de forma que, quando um objeto muda de estado, todos os seus dependentes são notificados automaticamente (Gamma et al., 1994; Refactoring.Guru, 2025).
+O padrão **Observer** é um dos padrões comportamentais definidos pelos GoF (Gang of Four), que estabelece uma dependência um-para-muitos entre objetos, de forma que, quando um objeto muda de estado, todos os seus dependentes são notificados automaticamente [1, 2].
 
 ## Aplicação no Projeto BrinCalango
 
@@ -9,7 +9,7 @@ O padrão **Observer** é um dos padrões comportamentais definidos pelos GoF (G
 
 No BrinCalango, há a necessidade de rastrear o comprometimento dos usuários com a realização de atividades diárias. O sistema implementa um controle denominado `ControleOfensiva` que monitora a quantidade de dias seguidos em que o usuário realiza atividades. Sempre que um usuário realiza uma atividade, ele notifica automaticamente o `ControleOfensiva` para atualizar esse controle.
 
-Essa necessidade foi identificada e modelada durante as atividades práticas da disciplina de Arquitetura de Software, sob a orientação da professora Milene (UnB, 2025).
+Essa necessidade foi identificada e modelada durante as atividades práticas da disciplina de Arquitetura de Software, sob a orientação da professora Milene (UnB, 2025) [3].
 
 ### Problema
 Manter o controle da ofensiva do usuário atualizado manualmente após cada atividade tornaria o sistema frágil, com alto acoplamento entre a lógica de realização de atividades e o controle de ofensiva.
@@ -20,9 +20,9 @@ Com o padrão **Observer**, é possível:
 - O `Usuario` notifica automaticamente os objetos `ControleOfensiva` associados a ele.
 - `ControleOfensiva` atualiza os dias seguidos e a data do último dia ao ser notificado.
 
-Essa abordagem favorece a separação de responsabilidades e reduz o acoplamento, alinhando-se às boas práticas recomendadas por Gamma et al. (1994).
+Essa abordagem favorece a separação de responsabilidades e reduz o acoplamento, alinhando-se às boas práticas recomendadas por Gamma et al. (1994) [1].
 
-### Imagem
+## Imagem
 
 <div align="center">
 
@@ -39,11 +39,11 @@ Essa abordagem favorece a separação de responsabilidades e reduz o acoplamento
 <a href="mailto:diogorodriguesbb@gmail.com">Diogo Barboza</a>, 
 <a href="mailto:an4catarina@gmail.com">Ana Catarina</a>, 2025</em></p>
 
-### Diagrama no Lucidchart
+## Diagrama no Lucidchart
 
 [Acesse o diagrama interativo no Lucidchart](https://lucid.app/lucidchart/ab4b32b3-4349-4cbd-90ad-b51ce4c55466/edit?viewport_loc=-2825%2C-1381%2C4989%2C2373%2C0_0&invitationId=inv_4a43ec74-d298-437f-803c-87bfacedd241)
 
-### Diagrama interativo
+## Diagrama interativo
 
 <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/ab4b32b3-4349-4cbd-90ad-b51ce4c55466" id="se8kNbQzaXBk"></iframe></div>
 
@@ -220,7 +220,7 @@ Implementação:
 - Foi dividido grupos para a modelagem e para a implementação.
 - Na implementação, a comunicação foi essecial, além de uma participação ativa dos membros.
 
-## Referências
+## Referências Bibliográficas 
 
 > [1] Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*.
 

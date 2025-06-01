@@ -1,10 +1,8 @@
-# 3.1.- GoFs Criacionais
-
-## Factory Method 
+# Factory Method 
 
 O padrão de projeto Factory Method é um padrão criacional que define uma interface para a criação de objetos, permitindo que as subclasses escolham qual tipo de objeto será instanciado. Essa abordagem promove flexibilidade e reduz o acoplamento entre o código que usa os objetos e suas classes concretas, facilitando a extensão do sistema sem modificar seu núcleo.
 
-### Modelagem do Factory Method 
+## Modelagem do Factory Method 
 
 Na Figura 2, encontra-se a modelagem para o Factory Method 
 
@@ -20,7 +18,7 @@ Na Figura 2, encontra-se a modelagem para o Factory Method
 
 A seguir, descrevemos as classes envolvidas e sua função no padrão.
 
-#### Classe Abstrata `Questao`
+### Classe Abstrata `Questao`
 
 Representa o **produto abstrato**.
 
@@ -102,11 +100,11 @@ Implementam o método de fábrica instanciando as subclasses de `Questao`.
 
 ---
 
-#### Frame interativo da modelagem do Factory Method
+## Frame interativo da modelagem do Factory Method
 
 <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/3d29c102-1433-45c0-8e62-4555223031e1" id="9e2iZ.B9riZr"></iframe></div>
 
-### Implementação do Factory Method
+## Implementação do Factory Method
 
 ```
 import java.util.List;
