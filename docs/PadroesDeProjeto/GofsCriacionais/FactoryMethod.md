@@ -4,13 +4,6 @@
 
 O padrão de projeto Factory Method é um padrão criacional que define uma interface para a criação de objetos, permitindo que as subclasses escolham qual tipo de objeto será instanciado. Essa abordagem promove flexibilidade e reduz o acoplamento entre o código que usa os objetos e suas classes concretas, facilitando a extensão do sistema sem modificar seu núcleo.
 
-#### Benefícios
-
-- Facilita a extensão do código com novos tipos de objetos.
-- Reduz o acoplamento entre o código cliente e as classes concretas.
-- Encapsula a lógica de criação dos objetos.
-
-
 ### Modelagem do Factory Method 
 
 Na Figura 2, encontra-se a modelagem para o Factory Method 
@@ -213,6 +206,43 @@ class Principal {
 }
 ```
 
+## (i)Autores:
+- Ana Júlia Mendes Santos  
+- Ana Catarina
+- Julia Rocha Fortunato
+- Luana Ribeiro Soares
+- Victor Hugo
+
+**Observação**: rastro dos commits está no histórico de versões no fim da página.
+
+##  (ii) Justificativas & senso crítico
+
+- O padrão Factory Method foi escolhido por promover flexibilidade na criação de diferentes tipos de questões sem exigir mudanças no código cliente. Isso segue o princípio Open/Closed (aberto para extensão, fechado para modificação).
+
+- A separação entre a lógica de criação (Creator) e a utilização dos objetos (Questao) melhora a organização e manutenibilidade do sistema.
+
+- Permite que novos tipos de questões sejam adicionados com baixo impacto no restante da aplicação — basta implementar uma nova subclasse de Questao e um novo Creator.
+
+- Reduz o acoplamento com classes concretas, facilitando a testabilidade e reutilização dos componentes do sistema.
+
+- A aplicação prática evidenciou que o padrão é especialmente útil em sistemas que precisam lidar com variações do mesmo tipo de objeto (como questões de diferentes formatos), tornando-o adequado ao escopo educacional proposto.
+
+Crítica construtiva:
+
+- Embora o padrão traga muitos benefícios, ele também aumenta a complexidade estrutural, o que pode ser desnecessário em sistemas pequenos ou com poucas variações.
+
+- Foi necessário certo esforço para entender claramente a separação entre criadores e produtos no início da implementação, demandando pesquisa e discussão em grupo para alinhamento conceitual.
+
+
+##  (iii) Comentários sobre o trabalho em equipe
+
+- O trabalho foi dividido de forma colaborativa;
+- As decisões sobre uso do padrão foram debatidas em reuniões curtas, promovendo aprendizado mútuo e engajamento;
+- A equipe se reuniu para elaborar a modelagem durante reuniões.
+
+
+
+
 ## Bibliografia 
 
 > [1] REFRACTORING.GURU. Factory Metho. [S. l.], [s. d.]. Disponível em: https://refactoring.guru/design-patterns/factory-method. Acesso em: 25 maio. 2025.
@@ -230,3 +260,4 @@ class Principal {
 | ------ | ---- | --------- | --------- | ----------- | -------------------- | ------- |
 | 1.0 | 25/05/2025 | Estruturação e Inclusão da implementação | [Ana Catarina](https://github.com/an4catarina) e [Victor Hugo](http://github.com/ViictorHugoo) | | | |
 | 1.1 | 30/05/2025 | Documentação da modelagem| [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) e [Luana Ribeiro](https://github.com/luanasoares0901) | | | |
+| 1.2 | 31/05/2025 | Correções na documentação|[Luana Ribeiro](https://github.com/luanasoares0901) | | | |
