@@ -34,7 +34,7 @@ Esse esquema ilustra como o padrão Proxy atua como uma camada de proteção ent
 
 </div>
 
-<p align="center"><em>Autor: <a href="https://github.com/juliatakaki" target="_blank">Júlia Takaki</a>, 2025</em></p>
+<p align="center"><em>Autor: <a href="https://github.com/juliatakaki" target="_blank">Júlia Takaki</a> e <a href="https://github.com/Oleari19" target="_blank">Maria Clara</a>, 2025</em></p>
 
 ### Implementação do Proxy
 ```
