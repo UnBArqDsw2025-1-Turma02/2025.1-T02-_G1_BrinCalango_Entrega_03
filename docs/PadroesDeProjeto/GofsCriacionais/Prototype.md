@@ -332,6 +332,8 @@ public class Main {
 - Ana Júlia Mendes Santos  
 - Maria Clara Oleari de Araujo
 - Júlia Takaki Neves
+- Maurício Ferreira de Araújo
+- Cristiano Morais
 
 **Observação**: rastro dos commits está no histórico de versões no fim da página.
 
@@ -359,4 +361,4 @@ public class Main {
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/8c27e9e66a1404e0664b4cf0ea93b82e572b6d0e) |
 | 1.1    | 28/05/2025 | Criação da implementação do Prototype | [Júlia Takaki](https://github.com/juliatakaki) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/9933b7cd86bf97b661f0ad2832aa4279ee5c7777) |
-| 1.2    | 28/05/2025 | Escrita da implementação do Prototype | [Mauricio Ferreira](https://github.com/mauricio-araujoo), [Cristiano Morais](https://github.com/CristianoMoraiss) | - | - | - |
+| 1.2    | 28/05/2025 | Escrita da implementação do Prototype | [Mauricio Ferreira](https://github.com/mauricio-araujoo), [Cristiano Morais](https://github.com/CristianoMoraiss) | - | - | [Commit1-2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/0bea0c2c69b3445cf4b28fe01e33ea71b9f8a967) |
