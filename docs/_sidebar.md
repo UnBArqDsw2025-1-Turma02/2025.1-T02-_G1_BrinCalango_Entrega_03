@@ -14,6 +14,7 @@
     - [3.3. Padrões de Projeto GoFs Comportamentais](/PadroesDeProjeto/GofsComportamentais/Introducao.md)
       - [3.3.1 Memento](/PadroesDeProjeto/GofsComportamentais/Memento.md)
       - [3.3.1 Observer](/PadroesDeProjeto/GofsComportamentais/Observer.md)
+      - [3.3.1 Template Method](/PadroesDeProjeto/GofsComportamentais/Template_Method.md)
     - [3.4. Participações - Padrões de Projeto](/PadroesDeProjeto/3.4.ParticipacoesPadroes.md)
     - [3.5. Iniciativas Extras - Padrões de Projeto](/PadroesDeProjeto/3.5.IniciativasExtras.md)
       
