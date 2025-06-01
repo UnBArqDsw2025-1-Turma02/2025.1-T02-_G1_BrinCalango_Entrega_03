@@ -2,43 +2,44 @@
 
 ## Proxy 
 
-O Proxy é um padrão de projeto estrutural que tem como principal objetivo controlar o acesso a um objeto, atuando como um intermediário entre o cliente e o objeto real. Esse padrão permite adicionar uma camada extra de controle sobre o objeto original sem alterar seu código, possibilitando a implementação de verificações, validações ou funcionalidades adicionais antes ou depois do acesso ao objeto real.
+### Introdução
 
-Dessa forma, o Proxy funciona como um substituto ou representante de outro objeto, controlando o acesso a ele e permitindo realizar algo antes ou depois que a solicitação chega ao objeto original [1]. Esse padrão é especialmente útil quando precisamos adicionar funcionalidades que não estão diretamente relacionadas à responsabilidade principal do objeto.
+O padrão de projeto Proxy pertence ao grupo dos padrões estruturais e tem como principal propósito fornecer um substituto ou representante para outro objeto. Ele atua como um intermediário, controlando o acesso ao objeto real, o que permite executar funcionalidades adicionais — como validações, cache ou controle de acesso — sem modificar diretamente o objeto original [1].
 
-Esse padrão pode ser observado em diversos contextos do mundo real, como em sistemas de controle de acesso a documentos confidenciais, onde um funcionário precisa ter autorização específica para acessar determinados arquivos. O sistema de segurança (Proxy) verifica as credenciais do funcionário antes de permitir ou negar o acesso ao documento solicitado (objeto real).
+O Proxy é particularmente útil em situações onde o objeto real é custoso para ser instanciado (por exemplo, quando exige acesso a recursos externos, como banco de dados ou arquivos), ou quando queremos garantir que certas condições sejam verificadas antes da interação com esse objeto.
 
-Seguindo essa ideia, pensou-se na aplicação de um Proxy no sistema BrinCalango para controlar o acesso ao conteúdo educacional. Essa ideia partiu do princípio de que o BrinCalango precisa garantir que os usuários acessem apenas conteúdos adequados ao seu nível de progresso e faixa etária. O padrão Proxy permite implementar essa verificação de forma transparente, sem modificar as classes de conteúdo existentes.
+De modo prático, o Proxy implementa a mesma interface do objeto real, sendo capaz de ser utilizado no lugar dele de forma transparente. O cliente interage com o Proxy como se estivesse interagindo com o objeto original, sem saber que há uma camada adicional de controle intermediando essa comunicação.
 
-A implementação do Proxy no BrinCalango foi dividida em duas partes principais: o controle de acesso às teorias e o controle de acesso às questões. Em ambos os casos, o Proxy verifica se o usuário atende aos requisitos necessários para acessar o conteúdo solicitado, como ter completado capítulos anteriores ou estar em um nível adequado para responder determinadas questões.
+Esse padrão é amplamente utilizado em contextos como:
+- Controle de acesso (Protection Proxy);
+- Inicialização sob demanda (Virtual Proxy);
+- Registro de chamadas (Logging Proxy);
+- Cache de resultados (Caching Proxy);
+- Representação local de objetos remotos (Remote Proxy).
 
-Dessa forma, a adoção do padrão Proxy no BrinCalango mostrou-se útil por permitir a implementação de um sistema de controle de acesso robusto e flexível, garantindo que os usuários interajam apenas com conteúdos apropriados ao seu progresso, sem a necessidade de modificar as classes de conteúdo existentes. Isso simplifica a manutenção do sistema e proporciona uma experiência de aprendizado mais adequada e personalizada para cada usuário.
+### Exemplo de aplicação no BrinCalango
 
-### Esquema ilustrativo do Proxy de Controle de Acesso
+No sistema BrinCalango, o padrão Proxy foi utilizado para controlar o acesso a conteúdos educacionais, como teorias e questões. A proposta surgiu da necessidade de garantir que os usuários interajam apenas com conteúdos apropriados ao seu progresso e faixa etária, sem que seja necessário modificar diretamente as classes originais de conteúdo.
 
-Com o objetivo de facilitar a compreensão do padrão de projeto Proxy na aplicação BrinCalango, foi desenvolvido um esquema ilustrativo, presente na Figura 1, que representa a interação entre os componentes principais: o **Usuário**, o **Progresso**, o **Conteúdo** e as classes de Proxy.
+A aplicação do padrão foi dividida em dois Proxys principais:
 
-O processo se inicia com o Usuário tentando acessar um conteúdo educacional, seja uma teoria ou uma questão. Antes que esse acesso seja concedido, o sistema verifica o progresso atual do usuário através da classe Progresso, que mantém informações sobre o capítulo atual e a última questão respondida.
+- TeoriaProxy: verifica se o usuário já alcançou o capítulo correspondente à teoria desejada;
+- QuestaoProxy: garante que o usuário já está apto a resolver uma questão específica, com base no seu progresso anterior.
 
-Quando o usuário tenta acessar uma teoria, a solicitação é interceptada pelo TeoriaProxy, que verifica se o capítulo solicitado está disponível para o nível atual do usuário. O TeoriaProxy compara o capítulo atual do usuário com o capítulo da teoria solicitada, permitindo o acesso apenas se o usuário já tiver progredido o suficiente (capítulo atual >= capítulo solicitado - 0.1). Caso contrário, o acesso é bloqueado.
+Ambos os Proxys consultam uma instância da classe Progresso, que mantém informações sobre o estágio atual do usuário. Essa abordagem reforça a ideia de separação de responsabilidades e facilita a manutenção e evolução do sistema.
 
-De forma semelhante, quando o usuário tenta acessar uma questão, a solicitação passa pelo QuestaoProxy, que verifica se o número da questão é adequado ao progresso atual do usuário. O QuestaoProxy compara o progresso do usuário com o número da questão, permitindo o acesso apenas se o usuário estiver pronto para responder aquela questão (questão atual >= número da questão - 0.1). Se o usuário atender aos requisitos, a solicitação é delegada para a questão real; caso contrário, o acesso é negado.
+Ilustração da arquitetura Proxy no BrinCalango
+A Figura 1 apresenta um esquema visual da interação entre os componentes do padrão Proxy no BrinCalango. A sequência de interação começa com o usuário tentando acessar um conteúdo. A solicitação é interceptada por um Proxy, que valida o progresso do usuário antes de delegar a solicitação ao objeto real (Teoria ou Questão).
 
-Esse esquema ilustra como o padrão Proxy atua como uma camada de proteção entre o usuário e o conteúdo, garantindo que o acesso seja concedido apenas quando apropriado, sem modificar as classes originais de Teoria e Questao. Isso permite um controle granular sobre o acesso ao conteúdo educacional, adaptando-se ao progresso individual de cada usuário no sistema BrinCalango.
+<p align="center"><strong>Figura 1 – Modelagem do Proxy</strong></p> <div align="center">
 
-<p align="center"><strong>Figura 1 – Modelagem do Proxy</strong></p>
+![modelagem proxy](../assets/Proxy.png)
 
-<div align="center">
+</div> <p align="center"><em>Autor: <a href="https://github.com/juliatakaki" target="_blank">Júlia Takaki</a> e <a href="https://github.com/Oleari19" target="_blank">Maria Clara</a>, 2025</em></p>
 
-![Modelagem do Proxy](../assets/Proxy.png)
 
-</div>
+### Implementação 
 
-<p align="center"><em>Autor: <a href="https://github.com/juliatakaki" target="_blank">Júlia Takaki</a> e <a href="https://github.com/Oleari19" target="_blank">Maria Clara</a>, 2025</em></p>
-
-### Implementação do Proxy
-```
-```
 
 ## Referências Bibliográficas
 
@@ -51,4 +52,4 @@ Esse esquema ilustra como o padrão Proxy atua como uma camada de proteção ent
 ## Histórico de Versões
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
-| 1.0    | 01/06/2025 | Criação e Documentação do Proxy | [Júlia Takaki](https://github.com/juliatakaki) e [Maria Clara](https://github.com/Oleari19)| - | - | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/c35b578d8c92e70d3772f47c6c39798c28ddfb90) |
+| 1.0    | 01/06/2025 | Criação e Documentação do Proxy | [Júlia Takaki](https://github.com/juliatakaki) e [Maria Clara](https://github.com/Oleari19)| [Victor Hugo](https://github.com/ViictorHugoo) | Reestruturação e mudança de textos | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/c35b578d8c92e70d3772f47c6c39798c28ddfb90) |

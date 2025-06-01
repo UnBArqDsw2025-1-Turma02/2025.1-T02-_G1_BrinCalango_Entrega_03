@@ -9,7 +9,17 @@ O padrão **Facade** é um dos padrões estruturais do catálogo *GoF* em um sub
 > “O Facade fornece uma interface simplificada para um subsistema complexo, facilitando o uso de bibliotecas ou códigos internos por parte do cliente.”  
 > Fonte: [Refactoring Guru - Facade](https://refactoring.guru/pt-br/design-patterns/facade)
 
-Esse padrão é especialmente útil quando lidamos com **sistemas compostos por múltiplos serviços ou módulos**, escondendo a complexidade e promovendo o desacoplamento entre os componentes.
+Na prática, isso significa que, em vez de lidar com vários serviços diferentes separadamente, você chama um único método da fachada, que cuida de tudo para você nos bastidores. É como apertar um botão “iniciar” e o sistema cuidar de todos os passos internos automaticamente.
+
+Esse padrão é útil especialmente quando o sistema já tem muitos módulos ou classes que precisam trabalhar juntas. Ele ajuda a:
+
+- Organizar o fluxo de execução, deixando o código mais limpo;
+
+- Evitar que o cliente conheça os detalhes internos do sistema;
+
+- Facilitar manutenção e leitura do código no longo prazo.
+
+Um exemplo comum seria em uma plataforma de ensino, onde a fachada pode ser responsável por iniciar um módulo, registrar a resposta de uma questão e mostrar o progresso do aluno — tudo isso com uma única chamada de função.
 
 ---
 
@@ -42,7 +52,7 @@ Esse padrão é especialmente útil quando lidamos com **sistemas compostos por 
 - **Facilidade de manutenção**: Mudanças internas nos serviços (ex: troca de implementação) não afetam quem consome o `Facade`.
 - **Melhora a legibilidade e organização do código**.
 
-## (i)Autores:
+## Autores:
 - Ana Júlia Mendes Santos  
 - Julia Rocha Fortunato
 - Luana Ribeiro Soares
@@ -50,7 +60,7 @@ Esse padrão é especialmente útil quando lidamos com **sistemas compostos por 
 
 **Observação**: rastro dos commits está no histórico de versões no fim da página.
 
-##  (ii) Justificativas & senso crítico
+## Justificativas & senso crítico
 
 No contexto do projeto **BrinCalango**, o padrão Facade foi adotado para **centralizar a orquestração das funcionalidades principais**: início de módulos, execução de atividades, resposta de questões, geração de feedbacks e visualização do progresso do usuário.
 
@@ -65,7 +75,7 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 - **Dependência de implementação concreta**: Apesar de ter uma interface, o uso direto da `FacadeImpl` pode gerar acoplamento indesejado se não for bem controlado.
 
 
-##  (iii) Comentários sobre o trabalho em equipe
+## Comentários sobre o trabalho em equipe
 
 - O trabalho foi dividido de forma colaborativa;
 - As decisões sobre uso do padrão foram debatidas em reuniões curtas, promovendo aprendizado mútuo e engajamento;
@@ -83,4 +93,4 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 ##  Histórico de Versões
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
-| 1.0    | 31/05/2025 | Criação e Documentação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) , [Luana Ribeiro](https://github.com/luanasoares0901) e [Maurício Araújo](https://github.com/mauricio-araujoo) | - | - |  |
+| 1.0    | 31/05/2025 | Criação e Documentação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) , [Luana Ribeiro](https://github.com/luanasoares0901) e [Maurício Araújo](https://github.com/mauricio-araujoo) | Ana Catarina Santos | Troca da imagem do facade, especificação na descrição |  |
