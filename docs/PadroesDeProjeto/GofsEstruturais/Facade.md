@@ -1,4 +1,4 @@
-# 3.2.- GoFs Estruturais
+# 3.2 - GoFs Estruturais
 
 ## Facade 
 
@@ -31,9 +31,134 @@ Esse padrão é especialmente útil quando lidamos com **sistemas compostos por 
 #### Frame interativo da modelagem do Facade
 <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/44e8d0b4-a9a0-47e3-8f2c-3b19c256692c" id="Lq8kb~zelObz"></iframe></div>
 
-### Implementação do Facade
+## Implementação do Facade
+
+```java
+//Facade.java
+package application;
+
+import entity.Feedback;
+import entity.Modulo;
+
+public interface Facade {
+    Modulo iniciarModulo(int idModulo);
+    public void executarAtividade(int idQuestao,Modulo modulo,String resposta);
+    public void responderQuestao(Modulo modulo, int idQuestao, String resposta);
+    Feedback mostrarResultadoUltimaResposta(int idUsuario);
+    void mostrarProgresso(int idUsuario);
+}
+```
+
+```java
+//FacadeImpl.java
+package application;
+
+import entity.Feedback;
+import entity.Modulo;
+import service.ModuloService;
+import service.QuestaoService;
+import service.UsuarioService;
+
+public class FacadeImpl implements Facade{
+
+    private ModuloService moduloService;
+    private QuestaoService questaoService;
+    private UsuarioService usuarioService;
+
+    public FacadeImpl(ModuloService moduloService, QuestaoService questaoService, UsuarioService usuarioService) {
+        this.moduloService = moduloService;
+        this.questaoService = questaoService;
+        this.usuarioService = usuarioService;
+    }
+
+    @Override
+    public Modulo iniciarModulo(int idModulo) {
+        System.out.println("Iniciando Modulo");
+        return moduloService.iniciarModulo(idModulo);
+    }
+
+    @Override
+    public void executarAtividade(int idQuestao,Modulo modulo,String resposta) {
+        System.out.println("Respondendo Questao "+ idQuestao);
+        if(questaoService.responderQuestao(modulo,idQuestao,resposta)){
+            System.out.println("Acertou!!");
+        }else {
+            System.out.println("Errou!!");
+        }
+        System.out.println("Gerando Feedback");
+        Feedback fe = questaoService.gerarFeedback(1);
+        System.out.println("Feedback da questao "+idQuestao+" com mensagem\n"+fe.getMensagem());
+
+    }
+
+    @Override
+    public void responderQuestao(Modulo modulo, int idQuestao, String resposta) {
+        System.out.println("Respondendo Questao "+ idQuestao);
+        if(questaoService.responderQuestao(modulo,idQuestao,resposta)){
+            System.out.println("Acertou!!");
+        }else {
+            System.out.println("Errou!!");
+        }
+    }
+
+    @Override
+    public Feedback mostrarResultadoUltimaResposta(int idUsuario) {
+        System.out.println("Feedback da ultima questao!");
+        return null;
+    }
+
+    @Override
+    public void mostrarProgresso(int idUsuario) {
+        System.out.println("Progresso do usuario"+idUsuario);
+    }
+
+    public ModuloService getModuloService() {
+        return moduloService;
+    }
+
+    public void setModuloService(ModuloService moduloService) {
+        this.moduloService = moduloService;
+    }
+
+    public QuestaoService getQuestaoService() {
+        return questaoService;
+    }
+
+    public void setQuestaoService(QuestaoService questaoService) {
+        this.questaoService = questaoService;
+    }
+
+    public UsuarioService getUsuarioService() {
+        return usuarioService;
+    }
+
+    public void setUsuarioService(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
+
+}
+```
+### Interface `Facade`
+
+A interface `Facade` é a aplicação direta do padrão de projeto estrutural Facade, que tem como principal objetivo esconder a complexidade de subsistemas internos e oferecer uma interface única e simplificada para o usuário utilizar.
+
+Com isso, a interface se relaciona com FacadeImpl, que centraliza a execução dos serviços principais do sistema BrinCalango, delegando as operações (métodos) para três serviços especializados, sendo eles:
+
+- ModuloService: responsável por iniciar os módulos de estudo com base no ID fornecido;
+- QuestaoService: lida com a lógica de resposta das questões e geração de feedbacks;
+- UsuarioService: gerencia e exibe o progresso do usuário.
 
 
+### Objetivo da Interface
+
+Centralizar a interação com os principais fluxos do sistema BrinCalango, como:
+
+- Iniciar módulos de estudo;
+- Executar atividades (responder questões);
+- Gerar e mostrar feedbacks;
+- Mostrar o progresso do usuário.
+
+Essa centralização facilita o uso do sistema, especialmente por parte de camadas externas como controladores, front-end ou APIs.
 
 ## Vantagens obtidas
 
@@ -42,9 +167,11 @@ Esse padrão é especialmente útil quando lidamos com **sistemas compostos por 
 - **Facilidade de manutenção**: Mudanças internas nos serviços (ex: troca de implementação) não afetam quem consome o `Facade`.
 - **Melhora a legibilidade e organização do código**.
 
-## (i)Autores:
+## (i) Autores:
+
 - Ana Júlia Mendes Santos  
-- Julia Rocha Fortunato
+- André Cláudio  
+- Júlia Rocha Fortunato
 - Luana Ribeiro Soares
 - Maurício Araújo 
 
@@ -71,7 +198,7 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 - As decisões sobre uso do padrão foram debatidas em reuniões curtas, promovendo aprendizado mútuo e engajamento;
 - A modelagem foi realizada em grupo durante reunião de forma colaborativa.
 
-##  Bibliografia
+##  Referências Bibliográficas 
 
 > [1] Refactoring.Guru - Padrão Facade: https://refactoring.guru/pt-br/design-patterns/facade. 
 
@@ -83,4 +210,4 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 ##  Histórico de Versões
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
-| 1.0    | 31/05/2025 | Criação e Documentação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) , [Luana Ribeiro](https://github.com/luanasoares0901) e [Maurício Araújo](https://github.com/mauricio-araujoo) | - | - |  |
+| 1.0    | 01/06/2025 | Criação e Documentação do Facade | [Ana Julia](https://github.com/ailujana), [André Cláudio](http://github.com/andre-maia51), [Julia Fortunato](http://github.com/julia-fortunato) , [Luana Ribeiro](https://github.com/luanasoares0901) e [Maurício Araújo](https://github.com/mauricio-araujoo) | - | - |  |
