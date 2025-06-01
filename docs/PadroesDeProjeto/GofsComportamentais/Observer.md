@@ -1,6 +1,3 @@
-
-# 3.2 - GoFs Comportamentais
-
 # Observer no BrinCalango
 
 ## Definição
