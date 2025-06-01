@@ -1,7 +1,12 @@
 #  Prototype no BrinCalango
 
 ##  Definição
-O padrão **Prototype** é um dos padrões criacionais definidos pelos GoF (Gang of Four) que permite **clonar objetos existentes** sem acoplá-los ao código que os cria. Ele é especialmente útil quando a criação de novos objetos a partir do zero é custosa ou complexa [1, 2].
+O padrão **Prototype** é um padrão de criação de objetos definido pelos GoF (Gang of Four) que permite criar novos objetos a partir da clonagem de instâncias já existentes, sem depender diretamente das classes concretas desses objetos. Ele é particularmente indicado em situações onde:
+- A criação de um objeto envolve processos custosos ou complexos;
+- O número de combinações possíveis de configurações de um objeto é elevado;
+- O sistema precisa manter a flexibilidade para gerar cópias modificáveis de objetos pré-existentes em tempo de execução.
+
+O Prototype fornece uma interface para que os objetos possam clonar a si mesmos, geralmente implementando um método como clone(), responsável por produzir uma cópia fiel do objeto original, preservando seu estado e suas configurações [1, 2].
 
 ##  Aplicação no Projeto BrinCalango
 
@@ -361,4 +366,4 @@ public class Main {
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/8c27e9e66a1404e0664b4cf0ea93b82e572b6d0e) |
 | 1.1    | 28/05/2025 | Criação da implementação do Prototype | [Júlia Takaki](https://github.com/juliatakaki) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/9933b7cd86bf97b661f0ad2832aa4279ee5c7777) |
-| 1.2    | 28/05/2025 | Escrita da implementação do Prototype | [Mauricio Ferreira](https://github.com/mauricio-araujoo), [Cristiano Morais](https://github.com/CristianoMoraiss) | - | - | [Commit1-2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/0bea0c2c69b3445cf4b28fe01e33ea71b9f8a967) |
+| 1.2    | 28/05/2025 | Escrita da implementação do Prototype | [Mauricio Ferreira](https://github.com/mauricio-araujoo), [Cristiano Morais](https://github.com/CristianoMoraiss) | [Júlia Takaki](https://github.com/juliatakaki) | Reestrutuação da definição | [Commit1-2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/0bea0c2c69b3445cf4b28fe01e33ea71b9f8a967) |
