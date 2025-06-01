@@ -8,9 +8,62 @@ Repositório utilizado pelo grupo responsável pelo desenvolvimento da documenta
 
 A aplicação busca democratizar o acesso ao conhecimento tecnológico e apoiar o desenvolvimento de habilidades computacionais desde os primeiros anos da vida escolar. Seu diferencial está no forte compromisso com a acessibilidade digital, com o objetivo de atender às diretrizes da WCAG 2.2 e à norma brasileira NBR 17225, garantindo uma experiência inclusiva e significativa para todas as crianças.
 
+
 ## Tecnologias Utilizadas
 
-A geração da documentação em um site estático é realizada utilizando o [Docsify](https://docsify.js.org/).
+Este projeto utiliza as seguintes tecnologias:
+
+- **[Docsify](https://docsify.js.org/):** Responsável por gerar a documentação como um site estático.
+- **Java 21:** Utilizado para implementar os padrões de projeto.
+
+Você pode baixar o Java 21 no link abaixo:
+
+```
+https://www.java.com/pt-BR/download/manual.jsp
+```
+
+---
+
+## Como Executar o Projeto
+
+### 1. Clonar o repositório
+
+Clone este repositório em sua máquina:
+
+```bash
+git clone <url-do-repositorio>
+```
+
+### 2. Acessar o diretório do padrão desejado
+
+Navegue até a pasta que contém a implementação do padrão de projeto que deseja executar:
+
+```bash
+cd ./implementation/<nome-do-padrao>
+```
+
+### 3. Compilar o projeto
+
+Compile o arquivo `Main.java` junto com os demais diretórios (exceto o `out`):
+
+```bash
+javac -d ./out Main.java ./<outros-diretorios>
+```
+
+### 4. Executar o projeto
+
+Rode a aplicação:
+
+```bash
+java -cp ./out Main
+```
+
+---
+
+### Alternativa: Executar via IDE
+
+Você também pode abrir diretamente a pasta `./implementation/<nome-do-padrao>` em sua IDE favorita (como IntelliJ IDEA, Eclipse, VS Code etc.) e executar o arquivo `Main.java` por lá.
+
 
 ## Contribuidores
 
