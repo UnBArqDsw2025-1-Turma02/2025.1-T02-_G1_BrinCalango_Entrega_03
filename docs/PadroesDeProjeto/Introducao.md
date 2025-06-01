@@ -1,4 +1,3 @@
-
 # GoFs de Padrões Comportamentais
 
 ## Introdução aos Padrões GoF

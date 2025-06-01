@@ -1,6 +1,4 @@
-# 3.2.- GoFs Estruturais
-
-## Proxy 
+# Proxy 
 
 O Proxy é um padrão de projeto estrutural que tem como principal objetivo controlar o acesso a um objeto, atuando como um intermediário entre o cliente e o objeto real. Esse padrão permite adicionar uma camada extra de controle sobre o objeto original sem alterar seu código, possibilitando a implementação de verificações, validações ou funcionalidades adicionais antes ou depois do acesso ao objeto real.
 
@@ -14,7 +12,7 @@ A implementação do Proxy no BrinCalango foi dividida em duas partes principais
 
 Dessa forma, a adoção do padrão Proxy no BrinCalango mostrou-se útil por permitir a implementação de um sistema de controle de acesso robusto e flexível, garantindo que os usuários interajam apenas com conteúdos apropriados ao seu progresso, sem a necessidade de modificar as classes de conteúdo existentes. Isso simplifica a manutenção do sistema e proporciona uma experiência de aprendizado mais adequada e personalizada para cada usuário.
 
-### Esquema ilustrativo do Proxy de Controle de Acesso
+## Esquema ilustrativo do Proxy de Controle de Acesso
 
 Com o objetivo de facilitar a compreensão do padrão de projeto Proxy na aplicação BrinCalango, foi desenvolvido um esquema ilustrativo, presente na Figura 1, que representa a interação entre os componentes principais: o **Usuário**, o **Progresso**, o **Conteúdo** e as classes de Proxy.
 
@@ -36,7 +34,7 @@ Esse esquema ilustra como o padrão Proxy atua como uma camada de proteção ent
 
 <p align="center"><em>Autor: <a href="https://github.com/juliatakaki" target="_blank">Júlia Takaki</a> e <a href="https://github.com/Oleari19" target="_blank">Maria Clara</a>, 2025</em></p>
 
-### Implementação do Proxy
+## Implementação do Proxy
 ```
 ```
 
@@ -46,7 +44,7 @@ Esse esquema ilustra como o padrão Proxy atua como uma camada de proteção ent
 
 ## Bibliografia 
 
-> SOURCEMAKING. Proxy. [S. l.], [s. d.]. Disponível em: https://sourcemaking.com/design_patterns/proxy. Acesso em: 01 jun. 2025.
+> [1] SOURCEMAKING. Proxy. [S. l.], [s. d.]. Disponível em: https://sourcemaking.com/design_patterns/proxy. Acesso em: 01 jun. 2025.
 
 ## Histórico de Versões
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |

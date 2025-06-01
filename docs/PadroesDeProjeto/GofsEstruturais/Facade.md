@@ -1,19 +1,16 @@
-# 3.2 - GoFs Estruturais
+# Facade 
 
-## Facade 
-
-###  Definição
+##  Definição
 O padrão **Facade** é um dos padrões estruturais do catálogo *GoF* em um subsistema. Ele define uma interface de mais alto nível que torna o subsistema mais fácil de usar.
 
-> Segundo Refactoring.Guru:  
+> Segundo Refactoring.Guru [1]:  
 > “O Facade fornece uma interface simplificada para um subsistema complexo, facilitando o uso de bibliotecas ou códigos internos por parte do cliente.”  
-> Fonte: [Refactoring Guru - Facade](https://refactoring.guru/pt-br/design-patterns/facade)
 
 Esse padrão é especialmente útil quando lidamos com **sistemas compostos por múltiplos serviços ou módulos**, escondendo a complexidade e promovendo o desacoplamento entre os componentes.
 
 ---
 
-### Imagem
+## Imagem
 
 <div align="center">
 
@@ -24,7 +21,7 @@ Esse padrão é especialmente útil quando lidamos com **sistemas compostos por 
 <p><em>Autor: <a href="https://github.com/julia-fortunato" target="_blank">Júlia Fortunato</a>, <a href="https://github.com/luanasoares0901" target="_blank">Luana</a>, <a href="https://github.com/ailujana" target="_blank">Ana Julia</a> e <a href="https://github.com/mauricio-araujoo" target="_blank">Maurício</a>, 2025</em></p>
 
 
-### Diagrama no Lucidchart
+## Diagrama no Lucidchart
 
 [Acesse o diagrama interativo no Lucidchart](https://lucid.app/lucidchart/44e8d0b4-a9a0-47e3-8f2c-3b19c256692c/edit?invitationId=inv_9811db09-efb6-48fd-93e7-b9ed212e6ff3&page=0_0#)
 
@@ -202,9 +199,11 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 
 > [1] Refactoring.Guru - Padrão Facade: https://refactoring.guru/pt-br/design-patterns/facade. 
 
-> [2] Slides da Prof.ª Milene – Aula GoFs Estruturais UnB (2024).
+## Bibliogafia
 
-> [3] Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley.
+> [1] Slides da Prof.ª Milene – Aula GoFs Estruturais UnB (2024).
+
+> [2] Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley.
 
 
 ##  Histórico de Versões
