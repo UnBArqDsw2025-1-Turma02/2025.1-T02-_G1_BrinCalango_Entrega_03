@@ -4,17 +4,6 @@
 
 O padrão Memento foi escolhido por sua capacidade de capturar e restaurar o estado interno de um objeto sem violar o encapsulamento. Isso se alinha perfeitamente com a necessidade de salvar e restaurar o progresso do usuário (nível, XP, acertos, erros etc.) de forma transparente.
 
-### Motivos da escolha:
-
-- **Isolamento do estado**: permite capturar o estado do objeto `Progresso` em um ponto específico no tempo.
-- **Reversibilidade**: possibilita restaurar estados anteriores — útil em casos de erro, redefinição de progresso ou simulação.
-- **Encapsulamento preservado**: o `Usuario` interage com snapshots (`ProgressoMemento`) sem acessar diretamente os dados internos de `Progresso`.
-- **Histórico de progresso**: o atributo `progressoSalvo: List<ProgressoMemento>` permite manter múltiplos estados salvos.
-
-### Considerações Críticas:
-
-Embora o padrão Memento seja poderoso, ele também pode aumentar o consumo de memória se muitos estados forem armazenados indiscriminadamente. No contexto infantil, isso é mitigado pela simplicidade dos dados e pela limitação dos checkpoints de salvamento.
-
 ### Estrutura do Memento na Modelagem
 
 A modelagem foi dividida em três classes principais:
@@ -72,15 +61,33 @@ Na Figura 2, encontra-se a modelagem para o Memento
 
 #### Frame interativo da modelagem do Memento
 
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/lucidchart/ab4b32b3-4349-4cbd-90ad-b51ce4c55466/edit?viewport_loc=-4864%2C-1184%2C5692%2C3108%2C0_0&invitationId=inv_4a43ec74-d298-437f-803c-87bfacedd241" id="9e2iZ.B9riZr"></iframe></div>
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/ab4b32b3-4349-4cbd-90ad-b51ce4c55466" id="Ys8kvwa65fiR"></iframe></div>
 
 ### Implementação do Memento
 
 
+## (i)Autores:
+- Ana Júlia Mendes Santos  
+- André Maia
+- Luana Ribeiro Soares
+
+**Observação**: rastro dos commits está no histórico de versões no fim da página.
+
+##  (ii) Justificativas & senso crítico
+
+- **Isolamento do estado**: permite capturar o estado do objeto `Progresso` em um ponto específico no tempo.
+- **Reversibilidade**: possibilita restaurar estados anteriores — útil em casos de erro, redefinição de progresso ou simulação.
+- **Encapsulamento preservado**: o `Usuario` interage com snapshots (`ProgressoMemento`) sem acessar diretamente os dados internos de `Progresso`.
+- **Histórico de progresso**: o atributo `progressoSalvo: List<ProgressoMemento>` permite manter múltiplos estados salvos.
+
+Embora o padrão Memento seja poderoso, ele também pode aumentar o consumo de memória se muitos estados forem armazenados indiscriminadamente. No contexto infantil, isso é mitigado pela simplicidade dos dados e pela limitação dos checkpoints de salvamento.
 
 
+##  (iii) Comentários sobre o trabalho em equipe
 
-
+- O trabalho foi dividido de forma colaborativa entre a equipe;
+- As decisões sobre uso do padrão foram debatidas em reuniões curtas, promovendo aprendizado mútuo e engajamento;
+- A modelagem foi relaizada em conjunto durante reunião.
 
 
 ## Bibliografia 
