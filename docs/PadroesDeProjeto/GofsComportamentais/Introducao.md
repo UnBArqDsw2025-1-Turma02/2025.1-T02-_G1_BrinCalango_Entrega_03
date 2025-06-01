@@ -146,6 +146,7 @@ O Memento é ideal para histórico e restauração; o Observer para notificaçõ
 > [6] SERRANO, M. Arquitetura e Desenho de Software – Aula GoFs Comportamentais. Universidade de Brasília, 2025
 
 ##  Histórico de Versões
+
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
-| :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
-| 1.0    | 01/06/2025 | Documentação dos GoFs Comportamentais | [Maria Clara](https://github.com/Oleari19) | - | - | [Commit 1]() |
+| :----: | ---------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------- |
+| 1.0    | 01/06/2025 | Documentação dos GoFs Comportamentais        | [Maria Clara](https://github.com/Oleari19)                        | -                                              | -                                                                                            | [Commit 1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/c812fc12f8663d373cbc3099de28a5eec68182b4) |
