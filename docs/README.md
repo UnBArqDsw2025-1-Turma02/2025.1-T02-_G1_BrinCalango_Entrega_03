@@ -47,7 +47,7 @@ O grande diferencial do BrinCalango está em seu compromisso com a acessibilidad
 ![Diagrama do Memento](PadroesDeProjeto/assets/memento.png)
 
 #### Observer
-![Diagrama do Observer](PadroesDeProjeto/assets/ModelagemObserver.png)
+![Diagrama do Observer](PadroesDeProjeto/assets/Observer.png)
 
 #### Template Method
 ![Diagrama do Template Methos](PadroesDeProjeto/assets//ModelagemTemplateMethod.png)
@@ -91,7 +91,7 @@ cd ./implementation/<nome-do-padrao>
 Compile o arquivo `Main.java` junto com os demais diretórios (exceto o `out`):
 
 ```bash
-javac -d ./out Main.java ./<outros-diretorios>
+javac -d ./out Main.java ./<outros-diretorios>/*.java
 ```
 
 #### 4. Executar o projeto
