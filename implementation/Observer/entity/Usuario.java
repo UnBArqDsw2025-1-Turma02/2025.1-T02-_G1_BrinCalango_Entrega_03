@@ -12,7 +12,7 @@ public class Usuario {
     private String email;
     private String senha;
     private ConfigAcessibilidade preferenciasAcessibilidade;
-    private ArrayList<ControleOfensiva> observer =  new ArrayList<ControleOfensiva>();
+    private ControleOfensiva observer =  new ControleOfensiva;
 
     public Usuario(){
     }

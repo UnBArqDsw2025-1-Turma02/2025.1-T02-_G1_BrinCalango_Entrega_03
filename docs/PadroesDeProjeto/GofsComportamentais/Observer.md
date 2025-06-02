@@ -48,7 +48,7 @@ Essa abordagem favorece a separação de responsabilidades e reduz o acoplamento
 
 <div align="center">
 
-![Diagrama do Observer](../assets/ModelagemObserver.png)
+![Diagrama do Observer](../assets/Observer.png)
 
 </div>
 
