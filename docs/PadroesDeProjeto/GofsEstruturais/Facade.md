@@ -117,7 +117,7 @@ public class FacadeImpl implements Facade{
 
     @Override
     public void mostrarProgresso(int idUsuario) {
-        System.out.println("Progresso do usuario"+idUsuario);
+        System.out.println("Progresso do usuario" + idUsuario);
     }
 
     public ModuloService getModuloService() {
@@ -175,8 +175,6 @@ Essa centralização facilita o uso do sistema, especialmente por parte de camad
 - **Facilidade de manutenção**: Mudanças internas nos serviços (ex: troca de implementação) não afetam quem consome o `Facade`.
 - **Melhora a legibilidade e organização do código**.
 
-## (i) Autores:
-
 ## Autores:
 - Ana Júlia Mendes Santos  
 - André Cláudio  
@@ -196,7 +194,7 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 - `QuestaoService`: Gerencia a lógica de resposta das questões e feedbacks.
 - `UsuarioService`: Coleta e apresenta o progresso do usuário.
 
-- **Risco de tornar-se uma “Deus-classe”**: Se a fachada centraliza lógica demais, ela pode crescer descontroladamente.
+- **Risco de tornar-se uma classe Deus**: Se a fachada centraliza lógica demais, ela pode crescer descontroladamente.
 - **Ocultamento excessivo da lógica**: Pode esconder detalhes importantes que seriam úteis em contextos mais flexíveis.
 - **Dependência de implementação concreta**: Apesar de ter uma interface, o uso direto da `FacadeImpl` pode gerar acoplamento indesejado se não for bem controlado.
 
@@ -222,3 +220,4 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 31/05/2025 | Criação e Documentação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) , [Luana Ribeiro](https://github.com/luanasoares0901) e [Maurício Araújo](https://github.com/mauricio-araujoo) | [Ana Catarina Santos](https://github.com/an4catarina) | Troca da imagem do facade, especificação na descrição | [Commit 1.0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/716a8548ddabc757c7d8f7f2a9bd7406fefceff1) |
+| 1.1    | 01/06/2025 | Implementação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato), [Maurício Araújo](https://github.com/mauricio-araujoo) e [André Maia](https://github.com/andre-maia51) | [Diogo Barboza](https://github.com/Diogo_Barboza) | Ajuste Histórico de Versão, Mudanças e correção de erros encontrados no texto | [Commit 1.0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/09081df3994d31efaba3b7648b751ec152e4bf99) |
