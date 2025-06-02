@@ -59,9 +59,270 @@ Na Figura 2, encontra-se a modelagem para o Memento
 
 ## Frame interativo da modelagem do Memento
 
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/ab4b32b3-4349-4cbd-90ad-b51ce4c55466" id="Ys8kvwa65fiR"></iframe></div>
+<div style="width: 1000px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/ab4b32b3-4349-4cbd-90ad-b51ce4c55466" id="Ys8kvwa65fiR"></iframe></div>
 
 ## Implementação do Memento
+
+### Classe `Usuário`
+
+```Java
+ package entity;
+
+ import java.time.LocalDate;
+ import java.time.Period;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.regex.Pattern;
+ import entity.ProgressoMemento;
+ import java.util.ArrayList;
+ import java.util.List;
+
+public class Usuario {
+    private int id;
+    private String nome;
+    private String email;
+    private String senha;
+    private Progresso progresso;
+    private List<ProgressoMemento> progressoSalvo;
+
+    public Usuario(int id, String nome, String email, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.progresso = new Progresso();
+        this.progressoSalvo = new ArrayList<>();
+    }
+
+    public Progresso getProgresso() {
+        return progresso;
+    }
+
+    public void salvarProgresso() {
+        progressoSalvo.add(progresso.salvarEstado());
+        System.out.println("Progresso salvo com sucesso.");
+    }
+
+    public void restaurarProgresso(int index) {
+        if (index >= 0 && index < progressoSalvo.size()) {
+            progresso.restaurarEstado(progressoSalvo.get(index));
+            System.out.println("Progresso restaurado para o estado " + index);
+        } else {
+            System.out.println("Índice inválido para restauração.");
+        }
+    }
+
+    public boolean salvarDados() {
+        System.out.println("Dados salvos com sucesso!");
+        return true;
+    }
+
+    public boolean validarEmail() {
+        String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        return Pattern.matches(regex, this.email);
+    }
+
+    public static class ConfigAcessibilidade {
+         private boolean altoContraste;
+         private boolean textoGrande;
+
+        public ConfigAcessibilidade(boolean altoContraste, boolean textoGrande) {
+             this.altoContraste = altoContraste;
+            this.textoGrande = textoGrande;
+         }
+
+        public boolean isAltoContraste() {
+             return altoContraste;
+         }
+
+         public boolean isTextoGrande() {
+            return textoGrande;
+        }
+
+        public void setAltoContraste(boolean altoContraste) {
+            this.altoContraste = altoContraste;
+         }
+
+        public void setTextoGrande(boolean textoGrande) {
+            this.textoGrande = textoGrande;
+        }
+    }
+
+     public class Feedback {
+         private int idQuestao;
+        private boolean acertou;
+
+        public Feedback(int idQuestao, boolean acertou) {
+             this.idQuestao = idQuestao;
+             this.acertou = acertou;
+         }
+
+        public int getIdQuestao() {
+             return idQuestao;
+        }
+
+         public boolean isAcertou() {
+             return acertou;
+         }
+     }
+
+     public class Teoria {
+        private int capitulo;
+        private String conteudo;
+
+        public Teoria(int capitulo, String conteudo) {
+            this.capitulo = capitulo;
+            this.conteudo = conteudo;
+        }
+
+        public int getCapitulo() {
+            return capitulo;
+        }
+
+        public String getConteudo() {
+            return conteudo;
+        }
+    }
+
+    public Teoria lerTeoria(int capitulo) {
+        return new Teoria(capitulo, "Conteúdo do capítulo " + capitulo);
+    }
+
+    public int calcularIdade() {
+        System.out.println("Calculando idade");
+        return 30;
+    }
+}
+```
+
+### Classe `Progresso`
+
+```JAVA
+package entity;
+
+public class Progresso {
+    private int nivelAtual = 1;
+    private int nivelProx = 2;
+    private int qtdXP = 0;
+    private int XPMaxNivel = 100;
+    private int totalQuestoesAcerto = 0;
+    private int totalQuestoesErro = 0;
+    private float porcentagemConcluida = 0;
+
+    public void atualizarProgresso(int qtdXP) {
+        this.qtdXP += qtdXP;
+        System.out.println("XP adicionado: " + qtdXP + " | Total de XP: " + this.qtdXP);
+        atualizarNivel();
+    }
+
+    public boolean atualizarNivel() {
+        if (qtdXP >= XPMaxNivel) { // pra subir de nivel precisa chegar ao max de xp
+            nivelAtual++;
+            nivelProx++;
+            qtdXP -= XPMaxNivel;
+            XPMaxNivel += 40;
+            System.out.println("Parabéns! Você subiu para o nível " + nivelAtual);
+            return true;
+        }
+        return false;
+    }
+
+    public void incrementarErros() {
+    totalQuestoesErro++;
+}
+
+
+    public ProgressoMemento salvarEstado() {
+        System.out.println("Salvando progresso...");
+        return new ProgressoMemento(nivelAtual, nivelProx, qtdXP, XPMaxNivel, totalQuestoesAcerto, totalQuestoesErro, porcentagemConcluida);
+    }
+
+    public void restaurarEstado (ProgressoMemento memento) {
+        System.out.println("Restaurando progresso salvo...");
+        this.nivelAtual = memento.getNivelAtual();
+        this.nivelProx = memento.getNivelProx();
+        this.qtdXP = memento.getQtdXP();
+        this.XPMaxNivel = memento.getXPMaxNivel();
+        this.totalQuestoesAcerto = memento.getTotalQuestoesAcerto();
+        this.totalQuestoesErro = memento.getTotalQuestoesErro();
+        this.porcentagemConcluida = memento.getPorcentagemConcluida();
+    }
+
+    public void mostrarProgresso() {
+        System.out.println("=== Progresso ===");
+        System.out.println("Nível atual: " + nivelAtual);
+        System.out.println("XP: " + qtdXP + "/" + XPMaxNivel);
+        System.out.println("=================");
+    }
+}
+```
+
+### Classe `ProgressoMemento`
+
+```JAVA
+package entity;
+
+public class ProgressoMemento{
+    private int nivelAtual;
+    private int nivelProx;
+    private int qtdXP;
+    private int XPMaxNivel;
+    private int totalQuestoesAcerto;
+    private int totalQuestoesErro;
+    private float porcentagemConcluida;
+
+    public ProgressoMemento(int nivelAtual, int nivelProx, int qtdXP, int XPMaxNivel, int totalQuestoesAcerto, int totalQuestoesErro, float porcentagemConcluida) {
+        this.nivelAtual = nivelAtual;
+        this.nivelProx = nivelProx;
+        this.qtdXP = qtdXP;
+        this.XPMaxNivel = XPMaxNivel;
+        this.totalQuestoesAcerto = totalQuestoesAcerto;
+        this.totalQuestoesErro = totalQuestoesErro;
+        this.porcentagemConcluida = porcentagemConcluida;
+    }
+    
+    public int getNivelAtual() { return nivelAtual; } 
+    public int getNivelProx() { return nivelProx; }
+    public int getQtdXP() { return qtdXP; }
+    public int getXPMaxNivel() { return XPMaxNivel; }
+    public int getTotalQuestoesAcerto() { return totalQuestoesAcerto; }
+    public int getTotalQuestoesErro() { return totalQuestoesErro; }
+    public float getPorcentagemConcluida() { return porcentagemConcluida; }
+
+}
+```
+
+### Classe `Main`
+
+```Java
+import entity.Usuario;
+
+public class Main {
+    public static void main(String[] args) {
+        Usuario usuario = new Usuario(1, "João", "joao@email.com", "senha123");
+
+        usuario.getProgresso().atualizarProgresso(50);
+        usuario.getProgresso().mostrarProgresso();
+
+        usuario.salvarProgresso();
+
+        usuario.getProgresso().atualizarProgresso(70);
+        usuario.getProgresso().mostrarProgresso();
+
+        usuario.salvarProgresso();
+
+        usuario.getProgresso().atualizarProgresso(200);
+        usuario.getProgresso().mostrarProgresso();
+
+        usuario.restaurarProgresso(0);
+        usuario.getProgresso().mostrarProgresso();
+    }
+}
+```
+
+
+
+
 
 
 ## (i) Autores:
@@ -103,3 +364,4 @@ Embora o padrão Memento seja poderoso, ele também pode aumentar o consumo de m
 | Versão | Data | Descrição | Autor(es) | Revisor(es) | Descrição da Revisão | Commits |
 | ------ | ---- | --------- | --------- | ----------- | -------------------- | ------- |
 | 1.1 | 30/05/2025 | Documentação da modelagem| [Ana Julia](https://github.com/ailujana), [André Maia](http://github.com/andre-maia51) e [Luana Ribeiro](https://github.com/luanasoares0901) | | | |
+| 1.2 | 01/06/2025 | Implementação do Memento| [Diogo Barboza](https://github.com/Diogo-Barboza), [Cristiano Moraes](http://github.com/CristianoMoraiss) | | | |
