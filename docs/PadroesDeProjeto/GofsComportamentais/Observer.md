@@ -222,6 +222,7 @@ Modelagem:
 - Diogo Rodrigues Barboza
 - Luana Ribeiro Soares
 - Victor Hugo Rodrigues Guimarães
+- Maria Clara Oleari de Araujo
 
 Implementação:
 - Julia Rocha Fortunato
@@ -255,9 +256,9 @@ Implementação:
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------- |
 | 1.0    | 01/06/2025 | Realização e documentação da modelagem           | [Victor Hugo](mailto:victorhugorodriguesguimaraes@gmail.com), [Júlia Takaki](mailto:julia.takaki@gmail.com), [Luana Soares](mailto:luana.soares0901@gmail.com), [Diogo Barboza](mailto:diogorodriguesbb@gmail.com), [Ana Catarina](mailto:an4catarina@gmail.com), [Ana Júlia](mailto:ailujana@gmail.com), [André Maia](mailto:acmc.0410@gmail.com) | - | - | [Commit 1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/1c56a6207dacd49e15db38ae6d41167a5aa2f359) |
-| 1.0    | 01/06/2025 | Documentação da implementação        | [Maria Clara](https://github.com/Oleari19)                        | -                                              | -                                                                                            | [Commit 1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/1c56a6207dacd49e15db38ae6d41167a5aa2f359) |
-| 1.1    | 01/06/2025 | Documentação da implementação        | [Júlia Fortunato](https://github.com/julia-fortunato), [Maria Clara](https://github.com/Oleari19) e [Mauricio Ferreira](https://github.com/mauricio-araujoo)  | -                                              | -                                                                                            | [Commit 2.1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/0ef1e80f3727d2588cb92fd729f06d3348e97518) e [Commit 2.2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/1c56a6207dacd49e15db38ae6d41167a5aa2f359)|
-| 1.2 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | |
+| 1.1    | 01/06/2025 | Documentação da modelagem        | [Maria Clara](https://github.com/Oleari19)                        | -                                              | -                                                                                            | [Commit 1.1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/1c56a6207dacd49e15db38ae6d41167a5aa2f359) |
+| 1.2   | 01/06/2025 | Documentação da implementação        | [Júlia Fortunato](https://github.com/julia-fortunato), [Maria Clara](https://github.com/Oleari19) e [Mauricio Ferreira](https://github.com/mauricio-araujoo)  | -                                              | -                                                                                            | [Commit 1.2.1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/0ef1e80f3727d2588cb92fd729f06d3348e97518) e [Commit 1.2.2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/1c56a6207dacd49e15db38ae6d41167a5aa2f359)|
+| 1.3 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | [Commit1.3](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/da8b635e375ee95c23e7c3cd72bab2736573c651) |
 
 
 

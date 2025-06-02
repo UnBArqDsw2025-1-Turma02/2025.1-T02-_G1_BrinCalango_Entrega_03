@@ -64,7 +64,7 @@ O grande diferencial do BrinCalango está em seu compromisso com a acessibilidad
 
 Possuir Java 21 ou superior instalado na máquina. 
 
-Se voc^Você pode baixar o Java 21 no link abaixo:
+Você pode baixar o Java 21 no link abaixo:
 
 ```
 https://www.java.com/pt-BR/download/manual.jsp
@@ -101,8 +101,3 @@ Rode a aplicação:
 ```bash
 java -cp ./out Main
 ```
-
----
-
-## Informações Complementares 
-Quaisquer outras informações adicionais podem ser descritas nessa seção.
