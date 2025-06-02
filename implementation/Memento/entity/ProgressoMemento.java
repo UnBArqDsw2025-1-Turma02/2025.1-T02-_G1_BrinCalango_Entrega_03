@@ -1,6 +1,6 @@
 package entity;
 
-public class ProgessoMemento{
+public class ProgressoMemento{
     private int nivelAtual;
     private int nivelProx;
     private int qtdXP;
@@ -26,7 +26,6 @@ public class ProgessoMemento{
     public int getTotalQuestoesAcerto() { return totalQuestoesAcerto; }
     public int getTotalQuestoesErro() { return totalQuestoesErro; }
     public float getPorcentagemConcluida() { return porcentagemConcluida; }
-
 
 }
 

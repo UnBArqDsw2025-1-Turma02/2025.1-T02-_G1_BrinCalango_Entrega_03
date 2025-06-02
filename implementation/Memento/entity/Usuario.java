@@ -1,30 +1,52 @@
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-import entity.ProgressoMemento;
+ package entity;
+
+ import java.time.LocalDate;
+ import java.time.Period;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.regex.Pattern;
+ import entity.ProgressoMemento;
+ import java.util.ArrayList;
+ import java.util.List;
 
 public class Usuario {
     private int id;
-    public LocalDate dataNascimento;
-    public String nome;
+    private String nome;
     private String email;
     private String senha;
-    private ConfigAcessibilidade preferenciasAcessibilidade;
     private Progresso progresso;
-    public List<ProgressoMemento> progressoSalvo;
+    private List<ProgressoMemento> progressoSalvo;
 
-    // Construtor
-    public Usuario(int id, String nome, String email, String senha, LocalDate dataNascimento, ConfigAcessibilidade config, Progresso progresso) {
+    public Usuario(int id, String nome, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.senha = gerarHashSenha(senha);
-        this.dataNascimento = dataNascimento;
-        this.preferenciasAcessibilidade = config;
-        this.progresso = progresso;
+        this.senha = senha;
+        this.progresso = new Progresso();
         this.progressoSalvo = new ArrayList<>();
+    }
+
+    public Progresso getProgresso() {
+        return progresso;
+    }
+
+    public void salvarProgresso() {
+        progressoSalvo.add(progresso.salvarEstado());
+        System.out.println("Progresso salvo com sucesso.");
+    }
+
+    public void restaurarProgresso(int index) {
+        if (index >= 0 && index < progressoSalvo.size()) {
+            progresso.restaurarEstado(progressoSalvo.get(index));
+            System.out.println("Progresso restaurado para o estado " + index);
+        } else {
+            System.out.println("Índice inválido para restauração.");
+        }
+    }
+
+    public boolean salvarDados() {
+        System.out.println("Dados salvos com sucesso!");
+        return true;
     }
 
     public boolean validarEmail() {
@@ -32,53 +54,52 @@ public class Usuario {
         return Pattern.matches(regex, this.email);
     }
 
-    public int calcularIdade() {
-        return Period.between(this.dataNascimento, LocalDate.now()).getYears();
-    }
+    public static class ConfigAcessibilidade {
+         private boolean altoContraste;
+         private boolean textoGrande;
 
-    public Teoria lerTeoria(int capitulo) {
-        return new Teoria(capitulo, "Conteúdo do capítulo " + capitulo);
-    }
+        public ConfigAcessibilidade(boolean altoContraste, boolean textoGrande) {
+             this.altoContraste = altoContraste;
+            this.textoGrande = textoGrande;
+         }
 
-    public Feedback realizarAtividade(int idQuestao) {
-        boolean acertou = Math.random() > 0.3;
-        if (acertou) {
-            progresso.atualizarProgresso(10); // Ganha 10 XP por acerto
-        } else {
-            progresso.incrementarErros(); // Supondo que Progresso tenha esse método
+        public boolean isAltoContraste() {
+             return altoContraste;
+         }
+
+         public boolean isTextoGrande() {
+            return textoGrande;
         }
-        return new Feedback(idQuestao, acertou);
-    }
 
-    public Progresso consultarProgresso() {
-        return progresso;
-    }
+        public void setAltoContraste(boolean altoContraste) {
+            this.altoContraste = altoContraste;
+         }
 
-    private String gerarHashSenha(String senhaOriginal) {
-        return Integer.toHexString(senhaOriginal.hashCode()); // Simples hash como exemplo
-    }
-
-    public boolean salvarDados() {
-        // Simulação de persistência (banco de dados, arquivo, etc.)
-        return true;
-    }
-
-    public void atualizarAcessibilidade(ConfigAcessibilidade config) {
-        this.preferenciasAcessibilidade = config;
-    }
-
-    public void salvarProgresso() {
-        progressoSalvo.add(progresso.salvarEstado());
-    }
-
-    public void restaurarProgresso() {
-        if (!progressoSalvo.isEmpty()) {
-            progresso.restaurarEstado(progressoSalvo.get(progressoSalvo.size() - 1));
+        public void setTextoGrande(boolean textoGrande) {
+            this.textoGrande = textoGrande;
         }
     }
 
-    // Classe auxiliar para Teoria
-    public class Teoria {
+    // Classe auxiliar para Feedback
+     public class Feedback {
+         private int idQuestao;
+        private boolean acertou;
+
+        public Feedback(int idQuestao, boolean acertou) {
+             this.idQuestao = idQuestao;
+             this.acertou = acertou;
+         }
+
+        public int getIdQuestao() {
+             return idQuestao;
+        }
+
+         public boolean isAcertou() {
+             return acertou;
+         }
+     }
+
+     public class Teoria {
         private int capitulo;
         private String conteudo;
 
@@ -96,49 +117,15 @@ public class Usuario {
         }
     }
 
-    // Classe auxiliar para Feedback
-    public class Feedback {
-        private int idQuestao;
-        private boolean acertou;
-
-        public Feedback(int idQuestao, boolean acertou) {
-            this.idQuestao = idQuestao;
-            this.acertou = acertou;
-        }
-
-        public int getIdQuestao() {
-            return idQuestao;
-        }
-
-        public boolean isAcertou() {
-            return acertou;
-        }
+    public Teoria lerTeoria(int capitulo) {
+        return new Teoria(capitulo, "Conteúdo do capítulo " + capitulo);
     }
 
-    // Classe auxiliar para ConfigAcessibilidade
-    public static class ConfigAcessibilidade {
-        private boolean altoContraste;
-        private boolean textoGrande;
-
-        public ConfigAcessibilidade(boolean altoContraste, boolean textoGrande) {
-            this.altoContraste = altoContraste;
-            this.textoGrande = textoGrande;
-        }
-
-        public boolean isAltoContraste() {
-            return altoContraste;
-        }
-
-        public boolean isTextoGrande() {
-            return textoGrande;
-        }
-
-        public void setAltoContraste(boolean altoContraste) {
-            this.altoContraste = altoContraste;
-        }
-
-        public void setTextoGrande(boolean textoGrande) {
-            this.textoGrande = textoGrande;
-        }
+    public int calcularIdade() {
+        System.out.println("Calculando idade");
+        return 30;
     }
+
 }
+
+

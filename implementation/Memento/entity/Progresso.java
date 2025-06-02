@@ -1,4 +1,4 @@
-package entidy;
+package entity;
 
 public class Progresso {
     private int nivelAtual = 1;
@@ -11,7 +11,7 @@ public class Progresso {
 
     public void atualizarProgresso(int qtdXP) {
         this.qtdXP += qtdXP;
-        System.out.println("XP adicionado: " + qtdXP + " | Total de XP: " + this.qtdXp);
+        System.out.println("XP adicionado: " + qtdXP + " | Total de XP: " + this.qtdXP);
         atualizarNivel();
     }
 
@@ -48,15 +48,12 @@ public class Progresso {
         this.porcentagemConcluida = memento.getPorcentagemConcluida();
     }
 
-    public int getQtdXP() {
-        return qtdXP;
+    public void mostrarProgresso() {
+        System.out.println("=== Progresso ===");
+        System.out.println("Nível atual: " + nivelAtual);
+        System.out.println("XP: " + qtdXP + "/" + XPMaxNivel);
+        System.out.println("=================");
     }
-
-    public int getNivelAtual() {
-        return nivelAtual;
-    }
-
-
 }
 
 
