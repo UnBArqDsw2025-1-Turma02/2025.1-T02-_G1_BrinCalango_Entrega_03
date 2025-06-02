@@ -3,6 +3,7 @@ package entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import application.FacadeImpl;
 
 public class Usuario {
 
@@ -12,17 +13,18 @@ public class Usuario {
     private String email;
     private String senha;
     private ConfigAcessibilidade preferenciasAcessibilidade;
-    private ControleOfensiva observer =  new ControleOfensiva();
+    private FacadeImpl facade;
 
     public Usuario(){
     }
 
-    public Usuario(int id, Date dataNascimento, String nome, String email, String senha) {
+    public Usuario(int id, Date dataNascimento, String nome, String email, String senha, FacadeImpl facade) {
         this.id = id;
         this.dataNascimento = dataNascimento;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.facade = facade;
     }
 
     public int getId() {
@@ -73,32 +75,24 @@ public class Usuario {
         this.preferenciasAcessibilidade = preferenciasAcessibilidade;
     }
 
-    public void realizarAtividade(Questao questao){
-        System.out.println("Realizando a atividade "+questao.getId()+"!");
-        notificarObservadores(questao);
+    public void setFacade(FacadeImpl facade) {
+        this.facade = facade;
     }
 
-    // Observer
-    private void notificarObservadores(Questao questao){
-        System.out.println("Notificando Observadores!");
-        if (observer != null) {
-            observer.atualizar(questao.getId(), LocalDate.now());
+    public Feedback responderQuestao(Modulo modulo, int idQuestao, String resposta) {
+      if (this.facade == null) {
+          throw new IllegalStateException("Facade não foi configurada.");
+      }
+      return this.facade.responderQuestao(modulo, idQuestao, resposta);
+    }
+
+
+    public Progresso verProgresso() {
+        if (this.facade == null) {
+            throw new IllegalStateException("Facade não foi configurada.");
         }
-
+        return this.facade.mostrarProgresso(this.id);
     }
-
-    public void adicionarObservador(ControleOfensiva obs){
-        System.out.println("Adicionando Observador!");
-        this.observer = obs;
-    }
-
-    public void removerObservador(ControleOfensiva obs){
-        System.out.println("Removendo Observador!");
-        if (this.observer == obs) {
-            this.observer = null;
-        }
-    }
-
 
 }
 

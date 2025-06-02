@@ -56,30 +56,19 @@ A implementação do `FacadeImpl` seguiu esse alinhamento, reunindo os principai
 
 ```java
 //Facade.java
-package application;
-
-import entity.Feedback;
-import entity.Modulo;
 
 public interface Facade {
-    Modulo iniciarModulo(int idModulo);
+    public Modulo iniciarModulo(int idModulo);
     public void executarAtividade(int idQuestao,Modulo modulo,String resposta);
-    public void responderQuestao(Modulo modulo, int idQuestao, String resposta);
-    Feedback mostrarResultadoUltimaResposta(int idUsuario);
-    void mostrarProgresso(int idUsuario);
+    public Feedback responderQuestao(Modulo modulo, int idQuestao, String resposta);
+    public Feedback mostrarResultadoUltimaResposta(int idUsuario);
+    public Progresso mostrarProgresso(int idUsuario);
 }
+
 ```
 
 ```java
 //FacadeImpl.java
-package application;
-
-import entity.Feedback;
-import entity.Modulo;
-import service.ModuloService;
-import service.QuestaoService;
-import service.UsuarioService;
-
 public class FacadeImpl implements Facade{
 
     private ModuloService moduloService;
@@ -113,14 +102,16 @@ public class FacadeImpl implements Facade{
     }
 
     @Override
-    public void responderQuestao(Modulo modulo, int idQuestao, String resposta) {
+    public Feedback responderQuestao(Modulo modulo, int idQuestao, String resposta) {
         System.out.println("Respondendo Questao "+ idQuestao);
         if(questaoService.responderQuestao(modulo,idQuestao,resposta)){
             System.out.println("Acertou!!");
         }else {
             System.out.println("Errou!!");
         }
+        return new Feedback("Feedback gerado com sucesso!");
     }
+    
 
     @Override
     public Feedback mostrarResultadoUltimaResposta(int idUsuario) {
@@ -129,32 +120,10 @@ public class FacadeImpl implements Facade{
     }
 
     @Override
-    public void mostrarProgresso(int idUsuario) {
-        System.out.println("Progresso do usuario" + idUsuario);
-    }
+    public Progresso mostrarProgresso(int idUsuario) {
+        System.out.println("Progresso do usuario"+idUsuario);
 
-    public ModuloService getModuloService() {
-        return moduloService;
-    }
-
-    public void setModuloService(ModuloService moduloService) {
-        this.moduloService = moduloService;
-    }
-
-    public QuestaoService getQuestaoService() {
-        return questaoService;
-    }
-
-    public void setQuestaoService(QuestaoService questaoService) {
-        this.questaoService = questaoService;
-    }
-
-    public UsuarioService getUsuarioService() {
-        return usuarioService;
-    }
-
-    public void setUsuarioService(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
+        return new Progresso("Progresso do usuário: salvo!");
     }
 
 }
@@ -235,3 +204,4 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 | 1.0    | 31/05/2025 | Criação e Documentação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) , [Luana Ribeiro](https://github.com/luanasoares0901) e [Maurício Araújo](https://github.com/mauricio-araujoo) | [Ana Catarina Santos](https://github.com/an4catarina) | Troca da imagem do facade, especificação na descrição | [Commit 1.0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/716a8548ddabc757c7d8f7f2a9bd7406fefceff1) |
 | 1.1    | 01/06/2025 | Implementação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato), [Maurício Araújo](https://github.com/mauricio-araujoo) e [André Maia](https://github.com/andre-maia51) | [Diogo Barboza](https://github.com/Diogo_Barboza) | Ajuste Histórico de Versão, Mudanças e correção de erros encontrados no texto | [Commit 1.0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/09081df3994d31efaba3b7648b751ec152e4bf99) [Commit 1.1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/7001c071b22805a2f0d1b1c8ba0042ab5163b2de) |
 | 1.2 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | [Commit1-2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/da8b635e375ee95c23e7c3cd72bab2736573c651) |
+| 1.3 | 02/06/2025 | Correção da modelagem e implementação do Facade | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato), [Maurício Ferreira](http://github.com/mauricio-araujoo) | | | [Commit1-3](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/80f13650985f0341dd971b90c4da117a84beab41) [Commit1-4]() |

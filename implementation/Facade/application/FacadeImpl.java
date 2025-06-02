@@ -2,6 +2,8 @@ package application;
 
 import entity.Feedback;
 import entity.Modulo;
+import entity.Progresso;
+import entity.Usuario;
 import service.ModuloService;
 import service.QuestaoService;
 import service.UsuarioService;
@@ -39,14 +41,16 @@ public class FacadeImpl implements Facade{
     }
 
     @Override
-    public void responderQuestao(Modulo modulo, int idQuestao, String resposta) {
+    public Feedback responderQuestao(Modulo modulo, int idQuestao, String resposta) {
         System.out.println("Respondendo Questao "+ idQuestao);
         if(questaoService.responderQuestao(modulo,idQuestao,resposta)){
             System.out.println("Acertou!!");
         }else {
             System.out.println("Errou!!");
         }
+        return new Feedback("Feedback gerado com sucesso!");
     }
+    
 
     @Override
     public Feedback mostrarResultadoUltimaResposta(int idUsuario) {
@@ -55,8 +59,10 @@ public class FacadeImpl implements Facade{
     }
 
     @Override
-    public void mostrarProgresso(int idUsuario) {
+    public Progresso mostrarProgresso(int idUsuario) {
         System.out.println("Progresso do usuario"+idUsuario);
+
+        return new Progresso("Progresso do usuário: salvo!");
     }
 
     public ModuloService getModuloService() {

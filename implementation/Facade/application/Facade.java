@@ -2,11 +2,16 @@ package application;
 
 import entity.Feedback;
 import entity.Modulo;
+import entity.Progresso;
+import service.ModuloService;
+import service.QuestaoService;
+import service.UsuarioService;
+import entity.Usuario;
 
 public interface Facade {
-    Modulo iniciarModulo(int idModulo);
+    public Modulo iniciarModulo(int idModulo);
     public void executarAtividade(int idQuestao,Modulo modulo,String resposta);
-    public void responderQuestao(Modulo modulo, int idQuestao, String resposta);
-    Feedback mostrarResultadoUltimaResposta(int idUsuario);
-    void mostrarProgresso(int idUsuario);
+    public Feedback responderQuestao(Modulo modulo, int idQuestao, String resposta);
+    public Feedback mostrarResultadoUltimaResposta(int idUsuario);
+    public Progresso mostrarProgresso(int idUsuario);
 }
