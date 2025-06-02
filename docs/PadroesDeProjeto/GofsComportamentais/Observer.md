@@ -3,6 +3,28 @@
 ## Definição
 O padrão **Observer** é um dos padrões comportamentais definidos pelos GoF (Gang of Four), que estabelece uma dependência um-para-muitos entre objetos, de forma que, quando um objeto muda de estado, todos os seus dependentes são notificados automaticamente [1, 2].
 
+## Metodologia
+
+Durante uma reunião presencial realizada em sala de aula, os sete integrantes da equipe se reuniram com o objetivo de discutir, de forma colaborativa, quais seriam os **padrões comportamentais mais adequados** para a aplicação BrinCalango.
+
+A aplicação possui diversas interações relacionadas ao progresso, atividades e trilhas de aprendizagem. Por isso, a equipe buscava padrões que auxiliassem na **organização das responsabilidades, flexibilidade das ações e controle de estado**.
+
+Diante das demandas do sistema, surgiram questionamentos sobre como:
+
+- Salvar e restaurar o estado do usuário sem expor sua estrutura interna;
+- Reagir automaticamente a eventos como a realização de atividades;
+- Padronizar o fluxo das trilhas teóricas sem restringir a variação entre estilos pedagógicos.
+
+A equipe considerou diferentes padrões comportamentais, avaliando suas vantagens e limitações dentro do contexto educacional gamificado da aplicação.
+
+Após a análise e o debate conjunto entre os sete membros da equipe, ficou decidida a adoção dos seguintes **padrões comportamentais do catálogo GoF**:
+
+- **Memento**: Para permitir o salvamento e restauração do progresso do usuário, sem violar o encapsulamento;
+- **Observer**: Para observar eventos como a realização de atividades e atualizar automaticamente mecanismos como a ofensiva;
+- **Template Method**: Para padronizar o fluxo de execução das trilhas de teoria, permitindo variações inclusivas.
+
+A escolha foi fundamentada em discussões técnicas conduzidas durante a reunião e validada com base nas modelagens e necessidades práticas da aplicação BrinCalango.
+
 ## Aplicação no Projeto BrinCalango
 
 ### Contexto
@@ -235,6 +257,7 @@ Implementação:
 | 1.0    | 01/06/2025 | Realização e documentação da modelagem           | [Victor Hugo](mailto:victorhugorodriguesguimaraes@gmail.com), [Júlia Takaki](mailto:julia.takaki@gmail.com), [Luana Soares](mailto:luana.soares0901@gmail.com), [Diogo Barboza](mailto:diogorodriguesbb@gmail.com), [Ana Catarina](mailto:an4catarina@gmail.com), [Ana Júlia](mailto:ailujana@gmail.com), [André Maia](mailto:acmc.0410@gmail.com) | - | - | [Commit 1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/1c56a6207dacd49e15db38ae6d41167a5aa2f359) |
 | 1.0    | 01/06/2025 | Documentação da implementação        | [Maria Clara](https://github.com/Oleari19)                        | -                                              | -                                                                                            | [Commit 1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/1c56a6207dacd49e15db38ae6d41167a5aa2f359) |
 | 1.1    | 01/06/2025 | Documentação da implementação        | [Júlia Fortunato](https://github.com/julia-fortunato), [Maria Clara](https://github.com/Oleari19) e [Mauricio Ferreira](https://github.com/mauricio-araujoo)  | -                                              | -                                                                                            | [Commit 2.1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/0ef1e80f3727d2588cb92fd729f06d3348e97518) e [Commit 2.2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/1c56a6207dacd49e15db38ae6d41167a5aa2f359)|
+| 1.2 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | |
 
 
 

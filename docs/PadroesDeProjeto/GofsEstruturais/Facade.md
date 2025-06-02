@@ -19,7 +19,20 @@ Esse padrão é útil especialmente quando o sistema já tem muitos módulos ou 
 
 Um exemplo comum seria em uma plataforma de ensino, onde a fachada pode ser responsável por iniciar um módulo, registrar a resposta de uma questão e mostrar o progresso do aluno — tudo isso com uma única chamada de função.
 
----
+## Metodologia
+
+Durante uma reunião remota realizada pela plataforma Microsoft Teams, os integrantes do grupo discutiram qual seria o **padrão estrutural mais adequado** para promover uma interface unificada e simplificada na aplicação BrinCalango.
+
+Foi levantada a necessidade de encapsular chamadas para diferentes serviços do sistema — como `ModuloService`, `QuestaoService` e `UsuarioService` — e surgiu a proposta de aplicar o padrão **Facade**.
+
+Após considerações técnicas e análise de alternativas, os membros decidiram em consenso pela adoção do padrão Facade, devido à sua capacidade de:
+
+- Reduzir o acoplamento entre os módulos do sistema;
+- Facilitar a manutenção futura e testes;
+- Centralizar fluxos de interação com o sistema de forma limpa e acessível.
+
+A implementação do `FacadeImpl` seguiu esse alinhamento, reunindo os principais métodos de uso recorrente por parte de controladores e front-end em uma interface única.
+
 
 ## Imagem
 
@@ -175,7 +188,7 @@ Essa centralização facilita o uso do sistema, especialmente por parte de camad
 - **Facilidade de manutenção**: Mudanças internas nos serviços (ex: troca de implementação) não afetam quem consome o `Facade`.
 - **Melhora a legibilidade e organização do código**.
 
-## Autores:
+## (i) Autores:
 - Ana Júlia Mendes Santos  
 - André Cláudio  
 - Júlia Rocha Fortunato
@@ -184,7 +197,7 @@ Essa centralização facilita o uso do sistema, especialmente por parte de camad
 
 **Observação**: rastro dos commits está no histórico de versões no fim da página.
 
-## Justificativas & senso crítico
+## (ii) Justificativas & senso crítico
 
 No contexto do projeto **BrinCalango**, o padrão Facade foi adotado para **centralizar a orquestração das funcionalidades principais**: início de módulos, execução de atividades, resposta de questões, geração de feedbacks e visualização do progresso do usuário.
 
@@ -199,7 +212,7 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 - **Dependência de implementação concreta**: Apesar de ter uma interface, o uso direto da `FacadeImpl` pode gerar acoplamento indesejado se não for bem controlado.
 
 
-## Comentários sobre o trabalho em equipe
+## (iii) Comentários sobre o trabalho em equipe
 
 - O trabalho foi dividido de forma colaborativa;
 - As decisões sobre uso do padrão foram debatidas em reuniões curtas, promovendo aprendizado mútuo e engajamento;
@@ -221,3 +234,4 @@ A interface `Facade` e sua implementação `FacadeImpl` abstraem e simplificam a
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 31/05/2025 | Criação e Documentação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) , [Luana Ribeiro](https://github.com/luanasoares0901) e [Maurício Araújo](https://github.com/mauricio-araujoo) | [Ana Catarina Santos](https://github.com/an4catarina) | Troca da imagem do facade, especificação na descrição | [Commit 1.0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/716a8548ddabc757c7d8f7f2a9bd7406fefceff1) |
 | 1.1    | 01/06/2025 | Implementação do Facade | [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato), [Maurício Araújo](https://github.com/mauricio-araujoo) e [André Maia](https://github.com/andre-maia51) | [Diogo Barboza](https://github.com/Diogo_Barboza) | Ajuste Histórico de Versão, Mudanças e correção de erros encontrados no texto | [Commit 1.0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/09081df3994d31efaba3b7648b751ec152e4bf99) [Commit 1.1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/7001c071b22805a2f0d1b1c8ba0042ab5163b2de) |
+| 1.2 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | |

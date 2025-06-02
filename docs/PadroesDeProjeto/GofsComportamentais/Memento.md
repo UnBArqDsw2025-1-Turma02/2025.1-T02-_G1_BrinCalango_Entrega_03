@@ -2,6 +2,59 @@
 
 O padrão Memento foi escolhido por sua capacidade de capturar e restaurar o estado interno de um objeto sem violar o encapsulamento. Isso se alinha perfeitamente com a necessidade de salvar e restaurar o progresso do usuário (nível, XP, acertos, erros etc.) de forma transparente.
 
+## Metodologia
+
+Durante uma reunião presencial realizada em sala de aula, os sete integrantes da equipe se reuniram com o objetivo de discutir, de forma colaborativa, quais seriam os **padrões comportamentais mais adequados** para a aplicação BrinCalango.
+
+A aplicação possui diversas interações relacionadas ao progresso, atividades e trilhas de aprendizagem. Por isso, a equipe buscava padrões que auxiliassem na **organização das responsabilidades, flexibilidade das ações e controle de estado**.
+
+Diante das demandas do sistema, surgiram questionamentos sobre como:
+
+- Salvar e restaurar o estado do usuário sem expor sua estrutura interna;
+- Reagir automaticamente a eventos como a realização de atividades;
+- Padronizar o fluxo das trilhas teóricas sem restringir a variação entre estilos pedagógicos.
+
+A equipe considerou diferentes padrões comportamentais, avaliando suas vantagens e limitações dentro do contexto educacional gamificado da aplicação.
+
+Após a análise e o debate conjunto entre os sete membros da equipe, ficou decidida a adoção dos seguintes **padrões comportamentais do catálogo GoF**:
+
+- **Memento**: Para permitir o salvamento e restauração do progresso do usuário, sem violar o encapsulamento;
+- **Observer**: Para observar eventos como a realização de atividades e atualizar automaticamente mecanismos como a ofensiva;
+- **Template Method**: Para padronizar o fluxo de execução das trilhas de teoria, permitindo variações inclusivas.
+
+A escolha foi fundamentada em discussões técnicas conduzidas durante a reunião e validada com base nas modelagens e necessidades práticas da aplicação BrinCalango.
+
+## Aplicação no Projeto BrinCalango
+
+### Contexto
+
+No BrinCalango, há a necessidade de salvar e restaurar o **progresso individual de cada usuário**, incluindo informações como nível atual, XP, total de acertos e erros, e porcentagem de conclusão.
+
+Essa funcionalidade é especialmente importante para usuários infantojuvenis, que podem interromper suas sessões abruptamente ou desejar retomar um ponto anterior da sua jornada de aprendizado.
+
+### Problema
+
+Manter o estado do progresso salvo diretamente em arquivos ou expor atributos internos de classes como `Progresso` tornaria o sistema vulnerável, com risco de corromper dados ou introduzir inconsistências no comportamento do usuário.
+
+Além disso, qualquer tentativa de "voltar ao estado anterior" exigiria lógica complexa e acoplada, indo contra os princípios de manutenção e modularidade.
+
+
+### Solução com Memento
+
+Com o padrão **Memento**, foi possível:
+
+- Permitir que a classe `Progresso` crie snapshots do seu estado atual (`ProgressoMemento`) sem expor internamente seus atributos;
+- Delegar à classe `Usuario` (cuidador) a responsabilidade de armazenar e restaurar esses snapshots;
+- Criar uma lista de mementos (`progressoSalvo`) que registra pontos de recuperação na trajetória do aluno.
+
+Essa solução permite funcionalidades como:
+- "Salvar progresso" automaticamente ao final de uma sessão;
+- "Restaurar progresso" após erros ou reinício do sistema;
+- Implementar futuras opções como **checkpoints**, **voltar nível** ou **repetir com nova abordagem**.
+
+Além de atender às necessidades funcionais, a aplicação do padrão respeita os princípios do **encapsulamento**, **responsabilidade única** e **extensibilidade**, conforme descrito por Gamma et al. (1994) [2].
+
+
 ## Estrutura do Memento na Modelagem
 
 A modelagem foi dividida em três classes principais:
@@ -363,5 +416,6 @@ Embora o padrão Memento seja poderoso, ele também pode aumentar o consumo de m
 ## Histórico de Versões
 | Versão | Data | Descrição | Autor(es) | Revisor(es) | Descrição da Revisão | Commits |
 | ------ | ---- | --------- | --------- | ----------- | -------------------- | ------- |
-| 1.1 | 30/05/2025 | Documentação da modelagem| [Ana Julia](https://github.com/ailujana), [André Maia](http://github.com/andre-maia51) e [Luana Ribeiro](https://github.com/luanasoares0901) | | | |
+| 1.1 | 30/05/2025 | Documentação da modelagem| [Victor Hugo](mailto:victorhugorodriguesguimaraes@gmail.com), [Júlia Takaki](mailto:julia.takaki@gmail.com), [Luana Soares](mailto:luana.soares0901@gmail.com), [Diogo Barboza](mailto:diogorodriguesbb@gmail.com), [Ana Catarina](mailto:an4catarina@gmail.com), [Ana Júlia](mailto:ailujana@gmail.com), [André Maia](mailto:acmc.0410@gmail.com)  | | |[Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/b0515ecd07d37cbc2d604ca7efa0a362ce29ece3)|
 | 1.2 | 01/06/2025 | Implementação do Memento| [Diogo Barboza](https://github.com/Diogo-Barboza), [Cristiano Moraes](http://github.com/CristianoMoraiss) | | | |
+| 1.3 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | |

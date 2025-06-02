@@ -17,6 +17,15 @@ Esse padrão é amplamente utilizado em contextos como:
 - Cache de resultados (Caching Proxy);
 - Representação local de objetos remotos (Remote Proxy).
 
+## Metodologia
+
+Durante uma **discussão interna entre alguns membros do grupo no WhatsApp**, surgiu a ideia de aplicar o padrão **Proxy** na arquitetura da aplicação BrinCalango.
+
+A proposta foi debatida com foco em cenários nos quais seria necessário **restringir ou controlar o acesso** a determinados conteúdos educacionais, como teorias e questões. A escolha foi motivada pela necessidade de garantir que os usuários **interajam apenas com conteúdos apropriados** ao seu progresso no sistema, sem que fosse necessário modificar diretamente as classes originais.
+
+Após análise dos benefícios do padrão, decidiu-se que o Proxy seria uma **solução eficiente e elegante**, promovendo o **princípio da responsabilidade única**, mantendo as classes originais focadas na lógica de negócio e delegando o controle de acesso a uma camada intermediária.
+
+
 ### Exemplo de aplicação no BrinCalango
 
 No sistema BrinCalango, o padrão Proxy foi utilizado para controlar o acesso a conteúdos educacionais, como teorias e questões. A proposta surgiu da necessidade de garantir que os usuários interajam apenas com conteúdos apropriados ao seu progresso e faixa etária, sem que seja necessário modificar diretamente as classes originais de conteúdo.
@@ -208,6 +217,32 @@ public class Cliente {
 }
 ```
 
+## (i)Autores:
+- Maria Clara Oleari  
+- Júlia Takaki
+
+**Observação**: rastro dos commits está no histórico de versões no fim da página.
+
+## (ii) Justificativas & senso crítico
+
+- O padrão Proxy foi escolhido por permitir o **controle de acesso a funcionalidades sensíveis** da aplicação, como a visualização de teorias ou questões, sem alterar diretamente as classes originais. Isso favorece o princípio da responsabilidade única e baixo acoplamento.
+
+- A aplicação do Proxy tornou possível a criação de uma camada intermediária que **verifica condições de acesso** antes de permitir que o usuário visualize certos conteúdos. Essa separação promove maior **organização, reutilização e segurança lógica** dentro do sistema.
+
+- O padrão também se mostrou útil para **fins pedagógicos**, ao permitir que funcionalidades sejam protegidas ou simuladas sem afetar a implementação original das classes-alvo.
+
+Crítica construtiva:
+
+- Embora o Proxy traga maior controle e organização, ele também pode **aumentar a complexidade** da arquitetura se aplicado de forma exagerada em componentes que não requerem esse tipo de proteção.
+
+- No início, houve dificuldade para distinguir o Proxy de outros padrões similares, exigindo leituras e discussões para entender o seu papel exato dentro do sistema e como mantê-lo coeso com os objetivos da aplicação.
+
+##  (iii) Comentários sobre o trabalho em equipe
+
+- O trabalho foi dividido de forma colaborativa;
+- As decisões sobre uso do padrão foram debatidas em reuniões curtas, promovendo aprendizado mútuo e engajamento;
+- A equipe se reuniu para elaborar a modelagem durante reuniões no Discord.
+
 ## Referências Bibliográficas
 
 > [1] REFRACTORING.GURU. Proxy. [S. l.], [s. d.]. Disponível em: https://refactoring.guru/design-patterns/proxy. Acesso em: 01 jun. 2025.
@@ -221,3 +256,4 @@ public class Cliente {
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 01/06/2025 | Criação e Documentação do Proxy | [Júlia Takaki](https://github.com/juliatakaki) e [Maria Clara](https://github.com/Oleari19)| [Victor Hugo](https://github.com/ViictorHugoo) | Reestruturação e mudança de textos | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/c35b578d8c92e70d3772f47c6c39798c28ddfb90) |
 | 1.1    | 01/06/2025 | Implementação do Proxy | [Júlia Takaki](https://github.com/juliatakaki), [Victor Hugo](https://github.com/ViictorHugoo) e [Ana Catarina](https://github.com/an4catarina) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/e0cc8c8fd9a965b41706dc45948dffded7690a0a) |
+| 1.2 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | |

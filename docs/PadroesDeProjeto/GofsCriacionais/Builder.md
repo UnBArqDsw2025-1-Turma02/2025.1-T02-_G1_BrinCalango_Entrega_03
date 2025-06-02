@@ -10,6 +10,18 @@ Seguindo essa ideia, pensou-se na aplicação de um Builder na classe responsáv
 
 Dessa forma, a adoção do padrão Builder no BrinCalango mostrou-se útil por permitir a criação flexível de diferentes configurações de acessibilidade, atendendo às necessidades específicas de cada grupo de crianças sem a necessidade de criar inúmeras subclasses ou interfaces complexas. Isso simplifica o processo de configuração e manutenção, garantindo uma experiência mais inclusiva e personalizada para os usuários do sistema.
 
+## Metodologia
+
+Durante o desenvolvimento deste trabalho, a equipe realizou uma reunião para discutir onde o padrão Builder poderia ser aplicado de forma mais estratégica dentro da arquitetura da aplicação BrinCalango.
+
+Inicialmente, considerou-se aplicar o padrão na construção da entidade `Usuario`, devido à quantidade de atributos e à necessidade de criar objetos com perfis variados.
+
+No entanto, durante a modelagem prática, a equipe percebeu que a classe `Usuario` não apresentava tanta variação no processo de construção. Por outro lado, a classe `ConfigAcessibilidade` revelou-se como uma excelente candidata ao padrão, pois representa **objetos complexos e altamente configuráveis**, voltados à personalização da experiência de usuários com diferentes perfis de acessibilidade.
+
+Com isso, a decisão final foi de **aplicar o padrão Builder na criação de objetos `ConfigAcessibilidade`**, permitindo configurar elementos como contraste, tamanho da fonte, leitor de telas e animações, de maneira flexível, escalável e organizada.
+
+Essa escolha demonstrou aderência aos princípios do padrão e alinhamento com o propósito inclusivo da aplicação.
+
 ## Esquema ilustrativo do Builder de Configuração de Acessibilidade
 
 Com o objetivo de facilitar a compreensão do padrão de projeto **Builder** na aplicação BrinCalango, foi desenvolvido um esquema ilustrativo, presente na Figura 1, que representa a interação entre três componentes principais: o **Cliente**, o **Director** e o **Builder**.
@@ -286,6 +298,33 @@ public class Cliente {
 }
 ```
 
+## (i)Autores:
+- André Cláudio   
+- Diogo Barboza
+- Júlia Rocha Fortunato
+
+**Observação**: rastro dos commits está no histórico de versões no fim da página.
+
+##  (ii) Justificativas & senso crítico
+
+- O padrão Builder foi escolhido por promover flexibilidade na construção de objetos complexos, permitindo que diferentes combinações de atributos sejam definidas passo a passo, sem a necessidade de múltiplos construtores sobrecarregados. 
+
+- Isso é especialmente valioso no BrinCalango, que possui foco em acessibilidade, pois diferentes usuários podem ter necessidades específicas — por exemplo, alguns podem precisar de contraste elevado, outros de fontes ampliadas, e alguns podem desejar desabilitar animações.
+
+- A adoção do Builder também contribui para a manutenibilidade do código, uma vez que facilita a criação de novos perfis de acessibilidade sem alterar a estrutura da classe ConfigAcessibilidade. Assim, é possível expandir ou modificar comportamentos sem comprometer as configurações existentes.
+
+
+Crítica construtiva:
+
+- Mas, é possível perceber, que o uso do Builder pode aumentar a complexidade do código. A criação de uma classe Builder separada adiciona mais arquivos e estruturas ao sistema, o que pode dificultar a leitura para desenvolvedores iniciantes ou em equipes com pouca familiaridade com padrões de projeto. Além disso, se as configurações forem muito simples ou raramente alteradas, o uso do Builder pode ser considerado um exagero — o que contraria o princípio da simplicidade.
+
+
+##  (iii) Comentários sobre o trabalho em equipe
+
+- O trabalho foi dividido de forma colaborativa;
+- A modelagem foi feita de forma conjunta entre Júlia e André, no qual foi possível ter várias discussões que contribuíram para a melhoria da construção do Builder;
+- Foi possível promover o engajamento entre a modelagem e a implementação, com comunicação feitas por mensagem e por ligações no Discord.
+
 ## Referências Bibliográficas
 
 > [1] REFRACTORING.GURU. Builder. [S. l.], [s. d.]. Disponível em: https://refactoring.guru/design-patterns/builder. Acesso em: 23 maio. 2025.
@@ -299,4 +338,5 @@ public class Cliente {
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 23/05/2025 | Criação e Documentação do Builder | [Andre Cláudio](https://github.com/andre-maia51), [Júlia Fortunato](https://github.com/julia-fortunato) | - | - | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/640be50b4d53000609c93e142ce41ec11d218840) |
 | 1.1    | 29/05/2025 | Criação da implementação do Builder | [Diogo Barboza](https://github.com/Diogo-Barboza) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/91917dcaac6b3ce3989754812d91acb1b29f6321) |
+| 1.2 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | |
 

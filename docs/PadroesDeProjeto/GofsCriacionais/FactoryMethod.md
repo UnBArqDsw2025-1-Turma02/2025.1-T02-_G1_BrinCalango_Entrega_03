@@ -2,6 +2,42 @@
 
 O padrão de projeto Factory Method é um padrão criacional que define uma interface para a criação de objetos, permitindo que as subclasses escolham qual tipo de objeto será instanciado. Essa abordagem promove flexibilidade e reduz o acoplamento entre o código que usa os objetos e suas classes concretas, facilitando a extensão do sistema sem modificar seu núcleo.
 
+## Metodologia
+
+Durante o desenvolvimento deste trabalho, os integrantes da equipe se reuniram presencialmente em sala de aula para discutir quais seriam os **padrões comportamentais mais adequados** à proposta da aplicação BrinCalango.
+
+Na ocasião, foi realizada uma análise conjunta entre os sete integrantes do grupo, considerando os principais desafios de interação, reatividade e controle de estado da aplicação.
+
+O debate foi guiado por critérios como:
+
+- Preservação e restauração do estado do usuário;
+- Reação automática a eventos do sistema;
+- Estruturação de fluxos reutilizáveis para exibição de conteúdo teórico.
+
+Esse processo colaborativo garantiu que a escolha dos padrões fosse fundamentada, crítica e aderente ao domínio do projeto.
+
+## Problema
+
+A aplicação BrinCalango envolvia múltiplos comportamentos associados à experiência de aprendizagem do usuário: progresso salvo, eventos reativos e variações na apresentação de conteúdo.
+
+Diante disso, surgiram questionamentos como:
+
+- Como salvar e restaurar o progresso do usuário sem comprometer o encapsulamento?
+- Como notificar automaticamente componentes quando ações do usuário forem realizadas?
+- Como garantir uma sequência lógica e padronizada para diferentes trilhas teóricas com variações específicas?
+
+A equipe precisava de soluções comportamentais que fossem coesas, desacopladas e compatíveis com os princípios de reusabilidade e escalabilidade.
+
+## Solução
+
+Após debate e alinhamento conceitual, a equipe decidiu pela adoção de três padrões comportamentais do catálogo GoF, por atenderem diretamente aos requisitos da aplicação:
+
+- **Memento**: Para capturar e restaurar o estado do progresso do usuário de forma segura e encapsulada;
+- **Observer**: Para acionar atualizações automáticas (como a ofensiva) quando o usuário realiza ações;
+- **Template Method**: Para definir um fluxo fixo de exibição de conteúdo nas trilhas teóricas, permitindo personalizações.
+
+A adoção desses padrões se mostrou coerente com os objetivos pedagógicos e técnicos da aplicação, e foi validada com modelagem, implementação e testes práticos conduzidos pela equipe.
+
 ## Modelagem do Factory Method 
 
 Na Figura 2, encontra-se a modelagem para o Factory Method 
@@ -259,3 +295,4 @@ Crítica construtiva:
 | 1.0 | 25/05/2025 | Estruturação e Inclusão da implementação | [Ana Catarina](https://github.com/an4catarina) e [Victor Hugo](http://github.com/ViictorHugoo) | | | |
 | 1.1 | 30/05/2025 | Documentação da modelagem| [Ana Julia](https://github.com/ailujana), [Julia Fortunato](http://github.com/julia-fortunato) e [Luana Ribeiro](https://github.com/luanasoares0901) | | | |
 | 1.2 | 31/05/2025 | Correções na documentação|[Luana Ribeiro](https://github.com/luanasoares0901) | | | |
+| 1.3 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | |

@@ -8,6 +8,18 @@ O padrão **Prototype** é um padrão de criação de objetos definido pelos GoF
 
 O Prototype fornece uma interface para que os objetos possam clonar a si mesmos, geralmente implementando um método como clone(), responsável por produzir uma cópia fiel do objeto original, preservando seu estado e suas configurações [1, 2].
 
+## Metodologia
+
+Durante o processo de definição dos padrões de projeto no BrinCalango, os integrantes da equipe realizaram uma reunião para discutir a aplicabilidade do padrão **Prototype** dentro do contexto da aplicação.
+
+Após análise conjunta e alinhamento com a proposta do jogo, decidiu-se que o melhor local para aplicá-lo seria na entidade `Questao`, uma vez que:
+
+- Todas as questões do jogo seguem modelos padronizados;
+- Essas questões precisariam ser duplicadas com frequência durante as provas, rodadas de treino e simulados;
+- A criação manual de cada nova questão seria custosa e repetitiva.
+
+Portanto, a equipe concluiu que o padrão **Prototype** seria ideal para possibilitar a **clonagem de questões-modelo**, promovendo **eficiência**, **manutenção simples** e **baixo acoplamento**, conforme os princípios defendidos na literatura clássica de engenharia de software.
+
 ##  Aplicação no Projeto BrinCalango
 
 ### Contexto
@@ -367,3 +379,4 @@ public class Main {
 | 1.0    | 26/05/2025 | Criação e Documentação do Prototype | [Ana Júlia](https://github.com/ailujana), [Maria Clara](https://github.com/Oleari19) | - | - | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/8c27e9e66a1404e0664b4cf0ea93b82e572b6d0e) |
 | 1.1    | 28/05/2025 | Criação da implementação do Prototype | [Júlia Takaki](https://github.com/juliatakaki) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/9933b7cd86bf97b661f0ad2832aa4279ee5c7777) |
 | 1.2    | 28/05/2025 | Escrita da implementação do Prototype | [Mauricio Ferreira](https://github.com/mauricio-araujoo), [Cristiano Morais](https://github.com/CristianoMoraiss) | [Júlia Takaki](https://github.com/juliatakaki) | Reestrutuação da definição | [Commit1-2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/0bea0c2c69b3445cf4b28fe01e33ea71b9f8a967) |
+| 1.3 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | |
