@@ -11,11 +11,11 @@ O Proxy é particularmente útil em situações onde o objeto real é custoso pa
 De modo prático, o Proxy implementa a mesma interface do objeto real, sendo capaz de ser utilizado no lugar dele de forma transparente. O cliente interage com o Proxy como se estivesse interagindo com o objeto original, sem saber que há uma camada adicional de controle intermediando essa comunicação.
 
 Esse padrão é amplamente utilizado em contextos como:
-- Controle de acesso (Protection Proxy);
-- Inicialização sob demanda (Virtual Proxy);
-- Registro de chamadas (Logging Proxy);
-- Cache de resultados (Caching Proxy);
-- Representação local de objetos remotos (Remote Proxy).
+- Controle de Acesso (Protection Proxy): Restringe o acesso a um objeto, verificando se o usuário tem permissão para interagir com ele;
+- Inicialização sob demanda (Virtual Proxy): Cria objetos pesados ou caros apenas quando necessário, economizando recursos;
+- Registro de chamadas (Logging Proxy): Registra todas as interações com o objeto real, útil para auditoria e rastreamento;
+- Cache de resultados (Caching Proxy): Armazena resultados de operações caras em cache, evitando a execução repetida de processos;
+- Representação local de objetos remotos (Remote Proxy): Representa localmente objetos remotos, permitindo a comunicação transparente entre sistemas distribuídos.
 
 ## Metodologia
 
@@ -50,46 +50,48 @@ A Figura 1 apresenta um esquema visual da interação entre os componentes do pa
 ### Implementação
 ```
 interface Conteudo {
-    void acessar(Usuario usuario);
+    void acessar(Usuario usuario); // Interface comum para Teoria e Questao
 }
 
 class Teoria implements Conteudo {
-    private float capitulo;
-    private String conteudo;
+    private float capitulo; // Número do capítulo da teoria
+    private String conteudo; // Conteúdo da teoria
 
     public Teoria(float capitulo, String conteudo) {
         this.capitulo = capitulo;
         this.conteudo = conteudo;
-        System.out.println("-> Criando Teoria do capítulo " + capitulo);
+        System.out.println("-> Criando Teoria do capítulo " + capitulo); // Mensagem de criação
     }
 
     @Override
     public void acessar(Usuario usuario) {
+        // Verifica e mostra o conteúdo da teoria se o progresso do usuário permitir
         System.out.println("Usuário " + usuario.getId() + " acessou Teoria do capítulo " + capitulo);
         System.out.println("Conteúdo: " + conteudo);
     }
 }
 
 class TeoriaProxy implements Conteudo {
-    private float capitulo;
-    private String conteudo;
-    private Teoria teoria;
+    private float capitulo; // Número do capítulo da teoria
+    private String conteudo; // Conteúdo da teoria
+    private Teoria teoria; // Instância real da teoria (criada apenas quando necessário)
 
     public TeoriaProxy(float capitulo, String conteudo) {
         this.capitulo = capitulo;
         this.conteudo = conteudo;
-        System.out.println("-> Criando TeoriaProxy para capítulo " + capitulo);
+        System.out.println("-> Criando TeoriaProxy para capítulo " + capitulo); // Mensagem de criação do Proxy
     }
 
     @Override
     public void acessar(Usuario usuario) {
         System.out.println("\nVerificando acesso à Teoria do capítulo " + capitulo);
 
+        // Verifica se o progresso do usuário permite acessar o conteúdo
         if (usuario.getProgresso().getCapituloAtual() >= (capitulo - 0.1)) {
             if (teoria == null) {
-                teoria = new Teoria(capitulo, conteudo);
+                teoria = new Teoria(capitulo, conteudo); // Cria a Teoria real apenas quando necessário
             }
-            teoria.acessar(usuario);
+            teoria.acessar(usuario); // Acessa o conteúdo da Teoria
         } else {
             System.out.println("Acesso negado. Usuário está no capítulo " + usuario.getProgresso().getCapituloAtual());
         }
@@ -97,49 +99,53 @@ class TeoriaProxy implements Conteudo {
 }
 
 class Questao implements Conteudo {
-    private int id;
-    private float capitulo;
-    private String corpo;
+    private int id; // Identificador da questão
+    private float capitulo; // Número do capítulo da questão
+    private String corpo; // Enunciado da questão
 
     public Questao(int id, float capitulo, String corpo) {
         this.id = id;
         this.capitulo = capitulo;
         this.corpo = corpo;
-        System.out.println("-> Criando Questão " + id + " para capítulo " + capitulo);
+        System.out.println("-> Criando Questão " + id + " para capítulo " + capitulo); // Mensagem de criação
     }
 
     @Override
     public void acessar(Usuario usuario) {
+        // Exibe o conteúdo da questão quando o usuário tem acesso
         System.out.println("Usuário " + usuario.getId() + " acessou Questão " + id + " do capítulo " + capitulo);
         System.out.println("Questão: " + corpo);
     }
 }
 
 class QuestaoProxy implements Conteudo {
-    private int id;
-    private float capitulo;
-    private String corpo;
-    private String numeroQuestao;
-    private Questao questao;
+    private int id; // Identificador da questão
+    private float capitulo; // Número do capítulo da questão
+    private String corpo; // Enunciado da questão
+    private String numeroQuestao; // Número da questão (representado como String)
+    private Questao questao; // Instância real da Questão (criada apenas quando necessário)
 
     public QuestaoProxy(int id, float capitulo, String corpo, String numeroQuestao) {
         this.id = id;
         this.capitulo = capitulo;
         this.corpo = corpo;
         this.numeroQuestao = numeroQuestao;
-        System.out.println("-> Criando QuestaoProxy para Questão " + id);
+        System.out.println("-> Criando QuestaoProxy para Questão " + id); // Mensagem de criação do Proxy
     }
 
     @Override
     public void acessar(Usuario usuario) {
         System.out.println("\nVerificando acesso à Questão " + id);
 
+        // Converte o número da questão de String para Float
         float numeroQuestaoFloat = Float.parseFloat(numeroQuestao);
+        
+        // Verifica se o progresso do usuário permite acessar a questão
         if (usuario.getProgresso().getQuestaoAtual(capitulo) >= (numeroQuestaoFloat - 0.1)) {
             if (questao == null) {
-                questao = new Questao(id, capitulo, corpo);
+                questao = new Questao(id, capitulo, corpo); // Cria a Questão real apenas quando necessário
             }
-            questao.acessar(usuario);
+            questao.acessar(usuario); // Acessa o conteúdo da Questão
         } else {
             System.out.println("Acesso negado. Usuário está na questão " + usuario.getProgresso().getQuestaoAtual(capitulo));
         }
@@ -147,8 +153,8 @@ class QuestaoProxy implements Conteudo {
 }
 
 class Progresso {
-    private float capituloAtual;
-    private float ultimaQuestaoRespondida;
+    private float capituloAtual; // Capítulo que o usuário está
+    private float ultimaQuestaoRespondida; // Última questão que o usuário respondeu
 
     public Progresso(float capituloAtual, float ultimaQuestaoRespondida) {
         this.capituloAtual = capituloAtual;
@@ -156,36 +162,37 @@ class Progresso {
     }
 
     public float getCapituloAtual() {
-        return capituloAtual;
+        return capituloAtual; // Retorna o capítulo atual
     }
 
     public float getQuestaoAtual(float capitulo) {
+        // Retorna a última questão respondida para o capítulo dado
         if (capitulo == capituloAtual) {
             return ultimaQuestaoRespondida;
         } else if (capitulo < capituloAtual) {
-            return 999;
+            return 999; // Retorna um valor indicando que o usuário já passou do capítulo
         } else {
-            return 0;
+            return 0; // Retorna 0 se o usuário ainda não acessou o capítulo
         }
     }
 }
 
 class Usuario {
-    private int id;
-    private Progresso progresso;
+    private int id; // Identificador do usuário
+    private Progresso progresso; // Objeto que contém o progresso do usuário
 
     public Usuario(int id, Progresso progresso) {
         this.id = id;
         this.progresso = progresso;
-        System.out.println("-> Criado Usuário " + id);
+        System.out.println("-> Criado Usuário " + id); // Mensagem de criação
     }
 
     public int getId() {
-        return id;
+        return id; // Retorna o identificador do usuário
     }
 
     public Progresso getProgresso() {
-        return progresso;
+        return progresso; // Retorna o progresso do usuário
     }
 }
 
@@ -193,28 +200,32 @@ public class Cliente {
     public static void main(String[] args) {
         System.out.println("Início do Proxy Educacional");
 
+        // Criando usuários com diferentes níveis de progresso
         Usuario iniciante = new Usuario(1, new Progresso(1.0f, 1.0f));
         Usuario intermediario = new Usuario(2, new Progresso(2.0f, 2.0f));
 
+        // Criando conteúdos (teoria e questões) com proxies
         Conteudo teoria1 = new TeoriaProxy(1.0f, "Variáveis e Tipos de Dados");
         Conteudo teoria2 = new TeoriaProxy(2.0f, "Árvores e Grafos");
 
         Conteudo questao1 = new QuestaoProxy(1, 1.0f, "O que é uma variável?", "1.0");
         Conteudo questao2 = new QuestaoProxy(2, 2.0f, "Implemente busca em árvore binária.", "2.0");
 
+        // Simulando o acesso dos usuários aos conteúdos
         System.out.println("\n--- Cenário 1 ---");
-        teoria1.acessar(iniciante);
-        questao1.acessar(iniciante);
+        teoria1.acessar(iniciante); // Usuário iniciante tenta acessar a Teoria 1
+        questao1.acessar(iniciante); // Usuário iniciante tenta acessar a Questão 1
 
         System.out.println("\n--- Cenário 2 ---");
-        teoria2.acessar(iniciante);
-        questao2.acessar(iniciante);
+        teoria2.acessar(iniciante); // Usuário iniciante tenta acessar a Teoria 2
+        questao2.acessar(iniciante); // Usuário iniciante tenta acessar a Questão 2
 
         System.out.println("\n--- Cenário 3 ---");
-        teoria2.acessar(intermediario);
-        questao2.acessar(intermediario);
+        teoria2.acessar(intermediario); // Usuário intermediário tenta acessar a Teoria 2
+        questao2.acessar(intermediario); // Usuário intermediário tenta acessar a Questão 2
     }
 }
+
 ```
 
 ## (i)Autores:
@@ -255,5 +266,5 @@ Crítica construtiva:
 | Versão | Data       | Descrição                                    | Autor(es)                                                                                              | Revisor(es)                                      | Descrição da Revisão                                                                                  | Commits |
 | :----: | ---------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------- |
 | 1.0    | 01/06/2025 | Criação e Documentação do Proxy | [Júlia Takaki](https://github.com/juliatakaki) e [Maria Clara](https://github.com/Oleari19)| [Victor Hugo](https://github.com/ViictorHugoo) | Reestruturação e mudança de textos | [Commit1-0](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/c35b578d8c92e70d3772f47c6c39798c28ddfb90) |
-| 1.1    | 01/06/2025 | Implementação do Proxy | [Júlia Takaki](https://github.com/juliatakaki), [Victor Hugo](https://github.com/ViictorHugoo) e [Ana Catarina](https://github.com/an4catarina) | - | - | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/e0cc8c8fd9a965b41706dc45948dffded7690a0a) |
+| 1.1    | 01/06/2025 | Implementação do Proxy | [Júlia Takaki](https://github.com/juliatakaki), [Victor Hugo](https://github.com/ViictorHugoo) e [Ana Catarina](https://github.com/an4catarina) | [Cristiano Morais](https://github.com/CristianoMoraiss) | Melhora textual e na implementação | [Commit1-1](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/e0cc8c8fd9a965b41706dc45948dffded7690a0a) |
 | 1.2 | 02/06/2025 | Ajustes na padronização da documentação | [Ana Júlia](https://github.com/ailujana), [Júlia Fortunato](http://github.com/julia-fortunato) | | | [Commit1-2](https://github.com/UnBArqDsw2025-1-Turma02/2025.1-T02-_G1_BrinCalango_Entrega_03/commit/da8b635e375ee95c23e7c3cd72bab2736573c651) |
